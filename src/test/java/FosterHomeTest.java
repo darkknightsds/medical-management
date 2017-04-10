@@ -50,4 +50,12 @@ public class FosterHomeTest {
      assertTrue(testFosterHome2.equals(FosterHome.all().get(1)));
    }
 
+   @Test
+public void clientsAreCreatedWithDatabaseId_True() {
+ FosterHome testFosterHome = new FosterHome(1, "Emma's Foster Home", "Emma", "Plesa", "123 Alphabet St.", "Paisley Park", "Minnesota", 71999, "777-777-1234");
+  testFosterHome.save();
+  assertTrue(testFosterHome.getId() > 0);
+}
+
+
 }
