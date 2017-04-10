@@ -7,9 +7,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.sql.Timestamp;
 
-public class ToDo {
+public class Task implements DatabaseManagement {
 
-  public ToDo() {
+  public Task() {
 
   }
 

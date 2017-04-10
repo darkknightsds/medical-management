@@ -9,7 +9,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.sql.Timestamp;
 
-public class ToDoTest {
+public class TaskTest {
 
   @Rule
   public DatabaseRule database = new DatabaseRule();

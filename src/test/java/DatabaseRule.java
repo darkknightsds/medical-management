@@ -11,11 +11,11 @@ public class DatabaseRule extends ExternalResource {
   @Override
   protected void after() {
     try(Connection con = DB.sql2o.open()) {
-      String deleteToDoQuery = "DELETE FROM to_dos *;";
+      String deleteToDoQuery = "DELETE FROM tasks *;";
       con.createQuery(deleteToDoQuery).executeUpdate();
-      String deleteInsuranceQuery = "DELETE FROM insurances *;";
+      String deleteInsuranceQuery = "DELETE FROM insurance *;";
       con.createQuery(deleteInsuranceQuery).executeUpdate();
-      String deleteMedHistoryQuery = "DELETE FROM med_historys *;";
+      String deleteMedHistoryQuery = "DELETE FROM med_histories *;";
       con.createQuery(deleteMedHistoryQuery).executeUpdate();
       String deleteMedicationQuery = "DELETE FROM medications *;";
       con.createQuery(deleteMedicationQuery).executeUpdate();
@@ -25,8 +25,6 @@ public class DatabaseRule extends ExternalResource {
       con.createQuery(deletePatientQuery).executeUpdate();
       String deleteFosterHomeQuery = "DELETE FROM foster_homes *;";
       con.createQuery(deleteFosterHomeQuery).executeUpdate();
-      String deleteAppQuery = "DELETE FROM apps *;";
-      con.createQuery(deleteAppQuery).executeUpdate();
     }
   }
 }

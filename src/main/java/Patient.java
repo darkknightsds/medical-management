@@ -7,7 +7,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.sql.Timestamp;
 
-public class Patient {
+public class Patient implements DatabaseManagement {
 
   public Patient() {
 
