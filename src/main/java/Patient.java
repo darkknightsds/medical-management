@@ -41,4 +41,60 @@ public class Patient  {
     this.primary_phone = primary_phone;
   }
 
+  public int getFosterHomeId() {
+    return foster_home_id;
+  }
+
+  public String getFirstName() {
+    return first_name;
+  }
+
+  public String getLastName() {
+    return last_name;
+  }
+
+  public Date getAdmitDate() {
+    return admit_date;
+  }
+
+  public String getTelephone() {
+    return telephone;
+  }
+
+  public String getSsid() {
+    return ssid;
+  }
+
+  public String getSex() {
+    return sex;
+  }
+
+  public Date getBirthDate() {
+    return birth_date;
+  }
+
+  public String getBirthPlace() {
+    return birth_place;
+  }
+
+  public String getFaith() {
+    return faith;
+  }
+
+  public String getHobbies() {
+    return hobbies;
+  }
+
+  public String getPreferredHospital() {
+    return preferred_hospital;
+  }
+
+  public String getPrimaryCareName() {
+    return primary_care_name;
+  }
+
+  public String getPrimaryPhone() {
+    return primary_phone;
+  }
+
 }
