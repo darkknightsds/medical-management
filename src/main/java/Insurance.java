@@ -7,7 +7,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.sql.Timestamp;
 
-public class Insurance implements DatabaseManagement {
+public class Insurance
+// implements DatabaseManagement
+{
 
   public Insurance() {
 
