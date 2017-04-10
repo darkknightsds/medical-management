@@ -7,6 +7,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.sql.Timestamp;
 
+
 public class FosterHome
 // implements DatabaseManagement
 {
@@ -20,7 +21,7 @@ public class FosterHome
   private String state;
   private int zip;
   private String telephone;
-
+  
   public FosterHome(int user_id, String facility_name, String primary_first, String primary_last, String address, String city, String state, int zip, String telephone) {
     this.foster_home_id = foster_home_id;
     this.user_id = user_id;

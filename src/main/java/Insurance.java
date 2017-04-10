@@ -10,7 +10,6 @@ import java.sql.Timestamp;
 public class Insurance
 // implements DatabaseManagement
 {
-
   public Insurance() {
 
   }
