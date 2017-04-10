@@ -42,20 +42,29 @@ public class FosterHomeTest {
   }
 
   @Test
-   public void savesAllHomesToDatabase_True() {
-     FosterHome testFosterHome = new FosterHome(1, "Emma's Foster Home", "Emma", "Plesa", "123 Alphabet St.", "Paisley Park", "Minnesota", 71999, "777-777-1234");
-     FosterHome testFosterHome2 = new FosterHome(1, "Emma's Foster Home", "Emma", "Plesa", "123 Alphabet St.", "Paisley Park", "Minnesota", 71999, "777-777-1234");
-     testFosterHome.save();
-     testFosterHome2.save();
-     assertTrue(testFosterHome2.equals(FosterHome.all().get(1)));
-   }
+  public void savesAllHomesToDatabase_True() {
+    FosterHome testFosterHome = new FosterHome(1, "Emma's Foster Home", "Emma", "Plesa", "123 Alphabet St.", "Paisley Park", "Minnesota", 71999, "777-777-1234");
+    FosterHome testFosterHome2 = new FosterHome(1, "Emma's Foster Home", "Emma", "Plesa", "123 Alphabet St.", "Paisley Park", "Minnesota", 71999, "777-777-1234");
+    testFosterHome.save();
+    testFosterHome2.save();
+    assertTrue(testFosterHome2.equals(FosterHome.all().get(1)));
+  }
 
-   @Test
-public void clientsAreCreatedWithDatabaseId_True() {
- FosterHome testFosterHome = new FosterHome(1, "Emma's Foster Home", "Emma", "Plesa", "123 Alphabet St.", "Paisley Park", "Minnesota", 71999, "777-777-1234");
-  testFosterHome.save();
-  assertTrue(testFosterHome.getId() > 0);
-}
+  @Test
+  public void clientsAreCreatedWithDatabaseId_True() {
+   FosterHome testFosterHome = new FosterHome(1, "Emma's Foster Home", "Emma", "Plesa", "123 Alphabet St.", "Paisley Park", "Minnesota", 71999, "777-777-1234");
+    testFosterHome.save();
+    assertTrue(testFosterHome.getId() > 0);
+  }
+
+  @Test
+  public void findsFosterHomeById_ReturnsSecondFosterHome() {
+    FosterHome newFosterHome1 = new FosterHome(1, "Emma's Foster Home", "Emma", "Plesa", "123 Alphabet St.", "Paisley Park", "Minnesota", 71999, "777-777-1234");
+    FosterHome newFosterHome2 = new FosterHome(1, "Emma's Foster Home", "Emma", "Plesa", "123 Alphabet St.", "Paisley Park", "Minnesota", 71999, "777-777-1234");
+    newFosterHome1.save();
+    newFosterHome2.save();
+    assertEquals(FosterHome.find(newFosterHome2.getId()), newFosterHome2);
+  }
 
 
 }
