@@ -97,4 +97,27 @@ public class Patient  {
     return primary_phone;
   }
 
+  @Override
+  public boolean equals(Object otherPatient) {
+    if (!(otherPatient instanceof Patient)) {
+      return false;
+    } else {
+      Patient newPatient = (Patient) otherPatient;
+      return this.getFosterHomeId() == newPatient.getFosterHomeId()
+        && this.getFirstName().equals(newPatient.getFirstName())
+        && this.getLastName().equals(newPatient.getLastName())
+        && this.getAdmitDate().equals(newPatient.getAdmitDate())
+        && this.getTelephone().equals(newPatient.getTelephone())
+        && this.getSsid().equals(newPatient.getSsid())
+        && this.getSex().equals(newPatient.getSex())
+        && this.getBirthDate().equals(newPatient.getBirthDate())
+        && this.getBirthPlace().equals(newPatient.getBirthPlace())
+        && this.getFaith().equals(newPatient.getFaith())
+        && this.getHobbies().equals(newPatient.getHobbies())
+        && this.getPreferredHospital().equals(newPatient.getPreferredHospital())
+        && this.getPrimaryCareName().equals(newPatient.getPrimaryCareName())
+        && this.getPrimaryPhone().equals(newPatient.getPrimaryPhone());
+    }
+  }
+
 }

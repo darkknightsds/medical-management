@@ -47,4 +47,10 @@ Date testDate2 = new Date (30, 3, 12);
      assertEquals("123-123-4567", testPatient.getPrimaryPhone());
    }
 
+   @Test
+   public void equals_returnsTrueIfValuesAreSame() {
+     Patient otherPatient = new Patient(1, "Bob", "Jones", testDate1, "222-222-2222", "111-11-1111", "female", testDate2, "Saskatchewan", "Hindu", "sports", "Legacy Emanuel", "Bob Ross, MD", "123-123-4567");
+     assertTrue(otherPatient.equals(testPatient));
+   }
+
 }
