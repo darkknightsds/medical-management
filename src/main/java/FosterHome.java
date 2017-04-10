@@ -7,7 +7,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.sql.Timestamp;
 
-public class FosterHome implements DatabaseManagement {
+public class FosterHome {
 
   public FosterHome() {
 
