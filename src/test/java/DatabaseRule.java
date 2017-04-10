@@ -25,6 +25,8 @@ public class DatabaseRule extends ExternalResource {
       con.createQuery(deletePatientQuery).executeUpdate();
       String deleteFosterHomeQuery = "DELETE FROM foster_homes *;";
       con.createQuery(deleteFosterHomeQuery).executeUpdate();
+      String deleteUsersQuery = "DELETE FROM users *;";
+      con.createQuery(deleteUsersQuery).executeUpdate();
     }
   }
 }
