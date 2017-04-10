@@ -55,6 +55,27 @@ CREATE TABLE foster_homes (
 ALTER TABLE foster_homes OWNER TO t1k1;
 
 --
+-- Name: foster_homes_foster_home_id_seq; Type: SEQUENCE; Schema: public; Owner: t1k1
+--
+
+CREATE SEQUENCE foster_homes_foster_home_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE foster_homes_foster_home_id_seq OWNER TO t1k1;
+
+--
+-- Name: foster_homes_foster_home_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: t1k1
+--
+
+ALTER SEQUENCE foster_homes_foster_home_id_seq OWNED BY foster_homes.foster_home_id;
+
+
+--
 -- Name: guardians; Type: TABLE; Schema: public; Owner: t1k1
 --
 
@@ -75,6 +96,27 @@ CREATE TABLE guardians (
 ALTER TABLE guardians OWNER TO t1k1;
 
 --
+-- Name: guardians_guardian_id_seq; Type: SEQUENCE; Schema: public; Owner: t1k1
+--
+
+CREATE SEQUENCE guardians_guardian_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE guardians_guardian_id_seq OWNER TO t1k1;
+
+--
+-- Name: guardians_guardian_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: t1k1
+--
+
+ALTER SEQUENCE guardians_guardian_id_seq OWNED BY guardians.guardian_id;
+
+
+--
 -- Name: insurance; Type: TABLE; Schema: public; Owner: t1k1
 --
 
@@ -90,6 +132,27 @@ CREATE TABLE insurance (
 
 
 ALTER TABLE insurance OWNER TO t1k1;
+
+--
+-- Name: insurance_insurance_id_seq; Type: SEQUENCE; Schema: public; Owner: t1k1
+--
+
+CREATE SEQUENCE insurance_insurance_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE insurance_insurance_id_seq OWNER TO t1k1;
+
+--
+-- Name: insurance_insurance_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: t1k1
+--
+
+ALTER SEQUENCE insurance_insurance_id_seq OWNED BY insurance.insurance_id;
+
 
 --
 -- Name: med_histories; Type: TABLE; Schema: public; Owner: t1k1
@@ -109,6 +172,27 @@ CREATE TABLE med_histories (
 ALTER TABLE med_histories OWNER TO t1k1;
 
 --
+-- Name: med_histories_med_historty_id_seq; Type: SEQUENCE; Schema: public; Owner: t1k1
+--
+
+CREATE SEQUENCE med_histories_med_historty_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE med_histories_med_historty_id_seq OWNER TO t1k1;
+
+--
+-- Name: med_histories_med_historty_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: t1k1
+--
+
+ALTER SEQUENCE med_histories_med_historty_id_seq OWNED BY med_histories.med_historty_id;
+
+
+--
 -- Name: medications; Type: TABLE; Schema: public; Owner: t1k1
 --
 
@@ -122,6 +206,27 @@ CREATE TABLE medications (
 
 
 ALTER TABLE medications OWNER TO t1k1;
+
+--
+-- Name: medications_medication_id_seq; Type: SEQUENCE; Schema: public; Owner: t1k1
+--
+
+CREATE SEQUENCE medications_medication_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE medications_medication_id_seq OWNER TO t1k1;
+
+--
+-- Name: medications_medication_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: t1k1
+--
+
+ALTER SEQUENCE medications_medication_id_seq OWNED BY medications.medication_id;
+
 
 --
 -- Name: patients; Type: TABLE; Schema: public; Owner: t1k1
@@ -149,6 +254,27 @@ CREATE TABLE patients (
 ALTER TABLE patients OWNER TO t1k1;
 
 --
+-- Name: patients_patient_id_seq; Type: SEQUENCE; Schema: public; Owner: t1k1
+--
+
+CREATE SEQUENCE patients_patient_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE patients_patient_id_seq OWNER TO t1k1;
+
+--
+-- Name: patients_patient_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: t1k1
+--
+
+ALTER SEQUENCE patients_patient_id_seq OWNED BY patients.patient_id;
+
+
+--
 -- Name: tasks; Type: TABLE; Schema: public; Owner: t1k1
 --
 
@@ -168,6 +294,27 @@ CREATE TABLE tasks (
 ALTER TABLE tasks OWNER TO t1k1;
 
 --
+-- Name: tasks_task_id_seq; Type: SEQUENCE; Schema: public; Owner: t1k1
+--
+
+CREATE SEQUENCE tasks_task_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE tasks_task_id_seq OWNER TO t1k1;
+
+--
+-- Name: tasks_task_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: t1k1
+--
+
+ALTER SEQUENCE tasks_task_id_seq OWNED BY tasks.task_id;
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: t1k1
 --
 
@@ -181,11 +328,95 @@ CREATE TABLE users (
 ALTER TABLE users OWNER TO t1k1;
 
 --
+-- Name: users_user_id_seq; Type: SEQUENCE; Schema: public; Owner: t1k1
+--
+
+CREATE SEQUENCE users_user_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE users_user_id_seq OWNER TO t1k1;
+
+--
+-- Name: users_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: t1k1
+--
+
+ALTER SEQUENCE users_user_id_seq OWNED BY users.user_id;
+
+
+--
+-- Name: foster_homes foster_home_id; Type: DEFAULT; Schema: public; Owner: t1k1
+--
+
+ALTER TABLE ONLY foster_homes ALTER COLUMN foster_home_id SET DEFAULT nextval('foster_homes_foster_home_id_seq'::regclass);
+
+
+--
+-- Name: guardians guardian_id; Type: DEFAULT; Schema: public; Owner: t1k1
+--
+
+ALTER TABLE ONLY guardians ALTER COLUMN guardian_id SET DEFAULT nextval('guardians_guardian_id_seq'::regclass);
+
+
+--
+-- Name: insurance insurance_id; Type: DEFAULT; Schema: public; Owner: t1k1
+--
+
+ALTER TABLE ONLY insurance ALTER COLUMN insurance_id SET DEFAULT nextval('insurance_insurance_id_seq'::regclass);
+
+
+--
+-- Name: med_histories med_historty_id; Type: DEFAULT; Schema: public; Owner: t1k1
+--
+
+ALTER TABLE ONLY med_histories ALTER COLUMN med_historty_id SET DEFAULT nextval('med_histories_med_historty_id_seq'::regclass);
+
+
+--
+-- Name: medications medication_id; Type: DEFAULT; Schema: public; Owner: t1k1
+--
+
+ALTER TABLE ONLY medications ALTER COLUMN medication_id SET DEFAULT nextval('medications_medication_id_seq'::regclass);
+
+
+--
+-- Name: patients patient_id; Type: DEFAULT; Schema: public; Owner: t1k1
+--
+
+ALTER TABLE ONLY patients ALTER COLUMN patient_id SET DEFAULT nextval('patients_patient_id_seq'::regclass);
+
+
+--
+-- Name: tasks task_id; Type: DEFAULT; Schema: public; Owner: t1k1
+--
+
+ALTER TABLE ONLY tasks ALTER COLUMN task_id SET DEFAULT nextval('tasks_task_id_seq'::regclass);
+
+
+--
+-- Name: users user_id; Type: DEFAULT; Schema: public; Owner: t1k1
+--
+
+ALTER TABLE ONLY users ALTER COLUMN user_id SET DEFAULT nextval('users_user_id_seq'::regclass);
+
+
+--
 -- Data for Name: foster_homes; Type: TABLE DATA; Schema: public; Owner: t1k1
 --
 
 COPY foster_homes (foster_home_id, user_id, facility_name, primary_first, primary_last, address, city, state, zip, telephone) FROM stdin;
 \.
+
+
+--
+-- Name: foster_homes_foster_home_id_seq; Type: SEQUENCE SET; Schema: public; Owner: t1k1
+--
+
+SELECT pg_catalog.setval('foster_homes_foster_home_id_seq', 1, false);
 
 
 --
@@ -197,11 +428,25 @@ COPY guardians (guardian_id, patient_id, first_name, last_name, relationship, ad
 
 
 --
+-- Name: guardians_guardian_id_seq; Type: SEQUENCE SET; Schema: public; Owner: t1k1
+--
+
+SELECT pg_catalog.setval('guardians_guardian_id_seq', 1, false);
+
+
+--
 -- Data for Name: insurance; Type: TABLE DATA; Schema: public; Owner: t1k1
 --
 
 COPY insurance (insurance_id, patient_id, insurance_provider, insurance_policy, va_policy, medicare_policy, medicaid_policy) FROM stdin;
 \.
+
+
+--
+-- Name: insurance_insurance_id_seq; Type: SEQUENCE SET; Schema: public; Owner: t1k1
+--
+
+SELECT pg_catalog.setval('insurance_insurance_id_seq', 1, false);
 
 
 --
@@ -213,11 +458,25 @@ COPY med_histories (med_historty_id, patient_id, type, name, date, medications, 
 
 
 --
+-- Name: med_histories_med_historty_id_seq; Type: SEQUENCE SET; Schema: public; Owner: t1k1
+--
+
+SELECT pg_catalog.setval('med_histories_med_historty_id_seq', 1, false);
+
+
+--
 -- Data for Name: medications; Type: TABLE DATA; Schema: public; Owner: t1k1
 --
 
 COPY medications (medication_id, patient_id, name, dosage, frequency) FROM stdin;
 \.
+
+
+--
+-- Name: medications_medication_id_seq; Type: SEQUENCE SET; Schema: public; Owner: t1k1
+--
+
+SELECT pg_catalog.setval('medications_medication_id_seq', 1, false);
 
 
 --
@@ -229,6 +488,13 @@ COPY patients (patient_id, foster_home_id, first_name, last_name, admit_date, te
 
 
 --
+-- Name: patients_patient_id_seq; Type: SEQUENCE SET; Schema: public; Owner: t1k1
+--
+
+SELECT pg_catalog.setval('patients_patient_id_seq', 1, false);
+
+
+--
 -- Data for Name: tasks; Type: TABLE DATA; Schema: public; Owner: t1k1
 --
 
@@ -237,11 +503,25 @@ COPY tasks (task_id, foster_id, task_name, type, recurring, frequency, "time", d
 
 
 --
+-- Name: tasks_task_id_seq; Type: SEQUENCE SET; Schema: public; Owner: t1k1
+--
+
+SELECT pg_catalog.setval('tasks_task_id_seq', 1, false);
+
+
+--
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: t1k1
 --
 
 COPY users (user_id, username, password) FROM stdin;
 \.
+
+
+--
+-- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: t1k1
+--
+
+SELECT pg_catalog.setval('users_user_id_seq', 1, false);
 
 
 --
