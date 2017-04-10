@@ -19,10 +19,11 @@ Date testDate2 = new Date (30, 3, 12);
   @Before
   public void setUp() {
     testPatient = new Patient(1, "Bob", "Jones", testDate1, "222-222-2222", "111-11-1111", "female", testDate2, "Saskatchewan", "Hindu", "sports", "Legacy Emanuel", "Bob Ross, MD", "123-123-4567");
+    testPatient.save();
   }
-  //
-  // @Rule
-  // public DatabaseRule database = new DatabaseRule();
+
+  @Rule
+  public DatabaseRule database = new DatabaseRule();
 
   @Test
   public void patient_instantiatesCorrectly_true() {
@@ -52,5 +53,18 @@ Date testDate2 = new Date (30, 3, 12);
      Patient otherPatient = new Patient(1, "Bob", "Jones", testDate1, "222-222-2222", "111-11-1111", "female", testDate2, "Saskatchewan", "Hindu", "sports", "Legacy Emanuel", "Bob Ross, MD", "123-123-4567");
      assertTrue(otherPatient.equals(testPatient));
    }
+
+   @Test
+   public void save_savesPatientToDatabase_true() {
+     assertTrue(Patient.all().get(0).equals(testPatient));
+   }
+
+   @Test
+   public void save_assignsIdToPatient() {
+     Patient savedPatient = Patient.all().get(0);
+     assertEquals(testPatient.getId(),savedPatient.getId());
+   }
+
+
 
 }

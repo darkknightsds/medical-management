@@ -97,6 +97,10 @@ public class Patient  {
     return primary_phone;
   }
 
+  public int getId() {
+    return id;
+  }
+
   @Override
   public boolean equals(Object otherPatient) {
     if (!(otherPatient instanceof Patient)) {
@@ -117,6 +121,37 @@ public class Patient  {
         && this.getPreferredHospital().equals(newPatient.getPreferredHospital())
         && this.getPrimaryCareName().equals(newPatient.getPrimaryCareName())
         && this.getPrimaryPhone().equals(newPatient.getPrimaryPhone());
+    }
+  }
+
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO patients (foster_home_id, first_name, last_name, admit_date, telephone, ssid, sex, birth_date, birth_place, faith, hobbies, preferred_hospital, primary_care_name, primary_phone) VALUES (:foster_home_id, :first_name, :last_name, :admit_date, :telephone, :ssid, :sex, :birth_date, :birth_place, :faith, :hobbies, :preferred_hospital, :primary_care_name, primary_phone);";
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("foster_home_id", this.foster_home_id)
+        .addParameter("first_name", this.first_name)
+        .addParameter("last_name", this.last_name)
+        .addParameter("admit_date", this.admit_date)
+        .addParameter("telephone", this.telephone)
+        .addParameter("ssid", this.ssid)
+        .addParameter("sex", this.sex)
+        .addParameter("birth_date", this.birth_date)
+        .addParameter("birth_place", this.birth_place)
+        .addParameter("faith", this.faith)
+        .addParameter("hobbies", this.hobbies)
+        .addParameter("preferred_hospital", this.preferred_hospital)
+        .addParameter("primary_care_name", this.primary_care_name)
+        .addParameter("primary_phone", this.primary_phone)
+        .executeUpdate()
+        .getKey();
+    }
+  }
+
+  public static List<Patient> all() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM patients;";
+      return con.createQuery(sql)
+        .executeAndFetch(Patient.class);
     }
   }
 
