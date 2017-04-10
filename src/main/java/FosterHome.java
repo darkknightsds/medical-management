@@ -84,4 +84,30 @@ public class FosterHome
     }
   }
 
+  public static List<FosterHome> all() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM foster_homes;";
+      return con.createQuery(sql)
+      .executeAndFetch(FosterHome.class);
+    }
+  }
+
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+    String sql = "INSERT INTO foster_homes (user_id, facility_name, primary_first, primary_last, address, city, state, zip, telephone) VALUES (:user_id, :facility_name, :primary_first, :primary_last, :address, :city, :state, :zip, :telephone);";
+    this.foster_home_id = (int) con.createQuery(sql, true)
+      .addParameter("user_id", this.user_id)
+      .addParameter("facility_name", this.facility_name)
+      .addParameter("primary_first", this.primary_first)
+      .addParameter("primary_last", this.primary_last)
+      .addParameter("address", this.address)
+      .addParameter("city", this.city)
+      .addParameter("state", this.state)
+      .addParameter("zip", this.zip)
+      .addParameter("telephone", this.telephone)
+      .executeUpdate()
+      .getKey();
+    }
+  }
+
 }

@@ -41,4 +41,13 @@ public class FosterHomeTest {
     assertTrue(testFosterHome.equals(testFosterHome2));
   }
 
+  @Test
+   public void savesAllHomesToDatabase_True() {
+     FosterHome testFosterHome = new FosterHome(1, "Emma's Foster Home", "Emma", "Plesa", "123 Alphabet St.", "Paisley Park", "Minnesota", 71999, "777-777-1234");
+     FosterHome testFosterHome2 = new FosterHome(1, "Emma's Foster Home", "Emma", "Plesa", "123 Alphabet St.", "Paisley Park", "Minnesota", 71999, "777-777-1234");
+     testFosterHome.save();
+     testFosterHome2.save();
+     assertTrue(testFosterHome2.equals(FosterHome.all().get(1)));
+   }
+
 }
