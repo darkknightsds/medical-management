@@ -24,6 +24,10 @@ public class Patient  {
   private int id;
   private int foster_home_id;
 
+public class Patient
+// implements DatabaseManagement
+{
+
   public Patient(int foster_home_id, String first_name, String last_name, Date admit_date, String telephone, String ssid, String sex, Date birth_date, String birth_place, String faith, String hobbies, String preferred_hospital, String primary_care_name, String primary_phone) {
     this.foster_home_id = foster_home_id;
     this.first_name = first_name;

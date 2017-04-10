@@ -15,14 +15,14 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner:
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
 --
 
 CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner:
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
@@ -495,3 +495,101 @@ SELECT pg_catalog.setval('patients_patient_id_seq', 1, false);
 
 
 --
+-- Data for Name: tasks; Type: TABLE DATA; Schema: public; Owner: t1k1
+--
+
+COPY tasks (task_id, foster_id, task_name, type, recurring, frequency, "time", date, completed) FROM stdin;
+\.
+
+
+--
+-- Name: tasks_task_id_seq; Type: SEQUENCE SET; Schema: public; Owner: t1k1
+--
+
+SELECT pg_catalog.setval('tasks_task_id_seq', 1, false);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: t1k1
+--
+
+COPY users (user_id, username, password) FROM stdin;
+\.
+
+
+--
+-- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: t1k1
+--
+
+SELECT pg_catalog.setval('users_user_id_seq', 1, false);
+
+
+--
+-- Name: foster_homes foster_homes_pk; Type: CONSTRAINT; Schema: public; Owner: t1k1
+--
+
+ALTER TABLE ONLY foster_homes
+    ADD CONSTRAINT foster_homes_pk PRIMARY KEY (foster_home_id);
+
+
+--
+-- Name: guardians guardians_pk; Type: CONSTRAINT; Schema: public; Owner: t1k1
+--
+
+ALTER TABLE ONLY guardians
+    ADD CONSTRAINT guardians_pk PRIMARY KEY (guardian_id);
+
+
+--
+-- Name: insurance insurance_pk; Type: CONSTRAINT; Schema: public; Owner: t1k1
+--
+
+ALTER TABLE ONLY insurance
+    ADD CONSTRAINT insurance_pk PRIMARY KEY (insurance_id);
+
+
+--
+-- Name: med_histories med_histories_pk; Type: CONSTRAINT; Schema: public; Owner: t1k1
+--
+
+ALTER TABLE ONLY med_histories
+    ADD CONSTRAINT med_histories_pk PRIMARY KEY (med_historty_id);
+
+
+--
+-- Name: medications medications_pk; Type: CONSTRAINT; Schema: public; Owner: t1k1
+--
+
+ALTER TABLE ONLY medications
+    ADD CONSTRAINT medications_pk PRIMARY KEY (medication_id);
+
+
+--
+-- Name: patients patients_pk; Type: CONSTRAINT; Schema: public; Owner: t1k1
+--
+
+ALTER TABLE ONLY patients
+    ADD CONSTRAINT patients_pk PRIMARY KEY (patient_id);
+
+
+--
+-- Name: tasks tasks_pk; Type: CONSTRAINT; Schema: public; Owner: t1k1
+--
+
+ALTER TABLE ONLY tasks
+    ADD CONSTRAINT tasks_pk PRIMARY KEY (task_id);
+
+
+--
+-- Name: users users_pk; Type: CONSTRAINT; Schema: public; Owner: t1k1
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pk PRIMARY KEY (user_id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+
