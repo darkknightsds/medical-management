@@ -21,7 +21,7 @@ public class Patient  {
   private String preferred_hospital;
   private String primary_care_name;
   private String primary_phone;
-  private int id;
+  private int patient_id;
   private int foster_home_id;
 
   public Patient(int foster_home_id, String first_name, String last_name, Date admit_date, String telephone, String ssid, String sex, Date birth_date, String birth_place, String faith, String hobbies, String preferred_hospital, String primary_care_name, String primary_phone) {
@@ -97,8 +97,8 @@ public class Patient  {
     return primary_phone;
   }
 
-  public int getId() {
-    return id;
+  public int getPatientId() {
+    return patient_id;
   }
 
   @Override
@@ -126,8 +126,8 @@ public class Patient  {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO patients (foster_home_id, first_name, last_name, admit_date, telephone, ssid, sex, birth_date, birth_place, faith, hobbies, preferred_hospital, primary_care_name, primary_phone) VALUES (:foster_home_id, :first_name, :last_name, :admit_date, :telephone, :ssid, :sex, :birth_date, :birth_place, :faith, :hobbies, :preferred_hospital, :primary_care_name, primary_phone);";
-      this.id = (int) con.createQuery(sql, true)
+      String sql = "INSERT INTO patients (foster_home_id, first_name, last_name, admit_date, telephone, ssid, sex, birth_date, birth_place, faith, hobbies, preferred_hospital, primary_care_name, primary_phone) VALUES (:foster_home_id, :first_name, :last_name, :admit_date, :telephone, :ssid, :sex, :birth_date, :birth_place, :faith, :hobbies, :preferred_hospital, :primary_care_name, :primary_phone);";
+      this.patient_id = (int) con.createQuery(sql, true)
         .addParameter("foster_home_id", this.foster_home_id)
         .addParameter("first_name", this.first_name)
         .addParameter("last_name", this.last_name)
@@ -152,6 +152,38 @@ public class Patient  {
       String sql = "SELECT * FROM patients;";
       return con.createQuery(sql)
         .executeAndFetch(Patient.class);
+    }
+  }
+
+  public static Patient find(int patient_id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM patients WHERE patient_id = :patient_id;";
+      Patient result  = con.createQuery(sql)
+        .addParameter("patient_id", patient_id)
+        .executeAndFetchFirst(Patient.class);
+      return result;
+    }
+  }
+
+  public void update(String first_name, String last_name, Date admit_date, String telephone, String ssid, String sex, Date birth_date, String birth_place, String faith, String hobbies, String preferred_hospital, String primary_care_name, String primary_phone) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE patients SET first_name = :first_name, last_name = :last_name, admit_date = :admit_date, telephone = :telephone, ssid = :ssid, sex = :sex, birth_date = :birth_date, birth_place = :birth_place, faith = :faith, hobbies = :hobbies, preferred_hospital = :preferred_hospital, primary_care_name = :primary_care_name, primary_phone = :primary_phone WHERE patient_id = :patient_id;";
+      con.createQuery(sql)
+      .addParameter("first_name", first_name)
+      .addParameter("last_name", last_name)
+      .addParameter("admit_date", admit_date)
+      .addParameter("telephone", telephone)
+      .addParameter("ssid", ssid)
+      .addParameter("sex", sex)
+      .addParameter("birth_date", birth_date)
+      .addParameter("birth_place", birth_place)
+      .addParameter("faith", faith)
+      .addParameter("hobbies", hobbies)
+      .addParameter("preferred_hospital", preferred_hospital)
+      .addParameter("primary_care_name", primary_care_name)
+      .addParameter("primary_phone", primary_phone)
+      .addParameter("patient_id", this.patient_id)
+      .executeUpdate();
     }
   }
 

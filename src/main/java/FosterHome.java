@@ -23,7 +23,6 @@ public class FosterHome
   private String telephone;
 
   public FosterHome(int user_id, String facility_name, String primary_first, String primary_last, String address, String city, String state, int zip, String telephone) {
-    this.foster_home_id = foster_home_id;
     this.user_id = user_id;
     this.facility_name = facility_name;
     this.primary_first = primary_first;
@@ -118,6 +117,41 @@ public class FosterHome
         .addParameter("foster_home_id", foster_home_id)
         .executeAndFetchFirst(FosterHome.class);
       return newFosterHome;
+    }
+  }
+
+  public void update(String facility_name, String primary_first, String primary_last, String address, String city, String state, int zip, String telephone) {
+    this.facility_name = facility_name;
+    this.primary_first = primary_first;
+    this.primary_last = primary_last;
+    this.address = address;
+    this.city = city;
+    this.state = state;
+    this.zip = zip;
+    this.telephone = telephone;
+
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE foster_homes SET (facility_name, primary_first, primary_last, address, city, state, zip, telephone) = (:facility_name, :primary_first, :primary_last, :address, :city, :state, :zip, :telephone) WHERE foster_home_id = :foster_home_id;";
+      con.createQuery(sql)
+        .addParameter("foster_home_id", this.foster_home_id)
+        .addParameter("facility_name", facility_name)
+        .addParameter("primary_first", primary_first)
+        .addParameter("primary_last", primary_last)
+        .addParameter("address", address)
+        .addParameter("city", city)
+        .addParameter("state", state)
+        .addParameter("zip", zip)
+        .addParameter("telephone", telephone)
+        .executeUpdate();
+    }
+  }
+
+  public List<Patient> getPatients() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM patients WHERE foster_home_id = :foster_home_id";
+      return con.createQuery(sql)
+        .addParameter("foster_home_id", this.foster_home_id)
+        .executeAndFetch(Patient.class);
     }
   }
 

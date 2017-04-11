@@ -98,9 +98,7 @@ public class InsuranceTest {
   public void updateInsurance_updatesInsuranceProperties_true() {
     Insurance testInsurance = new Insurance(1, "Kaiser Permanente", "239487dk", "237dhjkshjf8", "09345lkjdft", "9823749oiuhjdf");
     testInsurance.save();
-    testInsurance.updateInsurance(2, "Kaiser Permanente Diff", "qw2345gdg", "43wrsf", "345sdfdf", "332452345efgr");
-    assertEquals(2, Insurance.find(testInsurance.getInsuranceId()).getPatientId());
-    assertEquals(2, testInsurance.getPatientId());
+    testInsurance.updateInsurance("Kaiser Permanente Diff", "qw2345gdg", "43wrsf", "345sdfdf", "332452345efgr");
     assertEquals("Kaiser Permanente Diff", Insurance.find(testInsurance.getInsuranceId()).getInsuranceProvider());
     assertEquals("Kaiser Permanente Diff", testInsurance.getInsuranceProvider());
     assertEquals("qw2345gdg", Insurance.find(testInsurance.getInsuranceId()).getInsurancePolicy());
@@ -111,6 +109,15 @@ public class InsuranceTest {
     assertEquals("345sdfdf", testInsurance.getMedicarePolicy());
     assertEquals("332452345efgr", Insurance.find(testInsurance.getInsuranceId()).getMedicaidPolicy());
     assertEquals("332452345efgr", testInsurance.getMedicaidPolicy());
+  }
+
+  @Test
+  public void deleteInsurance_updatesInsuranceProperties_true() {
+    Insurance testInsurance = new Insurance(1, "Kaiser Permanente", "239487dk", "237dhjkshjf8", "09345lkjdft", "9823749oiuhjdf");
+    testInsurance.save();
+    int testInsuranceId = testInsurance.getInsuranceId();
+    testInsurance.deleteInsurance();
+    assertEquals(null, Insurance.find(testInsuranceId));
   }
 
 }
