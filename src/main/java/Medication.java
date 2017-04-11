@@ -11,10 +11,37 @@ import java.sql.Timestamp;
 public class Medication
 // implements DatabaseManagement
  {
+   private int medication_id;
+   private int patient_id;
+   private String name;
+   private String dosage;
+   private String frequency;
 
+  public Medication(int patient_id, String name, String dosage, String frequency) {
+    this.patient_id = patient_id;
+    this.name = name;
+    this.dosage = dosage;
+    this.frequency = frequency;
+  }
 
-  public Medication() {
+  public int getMedicationId() {
+    return medication_id;
+  }
 
+  public int getPatientId() {
+    return patient_id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getDosage() {
+    return dosage;
+  }
+
+  public String getFrequency() {
+    return frequency;
   }
 
 }

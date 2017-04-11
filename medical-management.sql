@@ -199,9 +199,9 @@ ALTER SEQUENCE med_histories_med_historty_id_seq OWNED BY med_histories.med_hist
 CREATE TABLE medications (
     medication_id integer NOT NULL,
     patient_id integer NOT NULL,
-    name integer NOT NULL,
-    dosage integer NOT NULL,
-    frequency integer NOT NULL
+    name character varying NOT NULL,
+    dosage character varying NOT NULL,
+    frequency character varying NOT NULL
 );
 
 
