@@ -147,4 +147,13 @@ public class FosterHome
     }
   }
 
+  public List<Patient> getPatients() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM patients WHERE foster_home_id = :foster_home_id";
+      return con.createQuery(sql)
+        .addParameter("foster_home_id", this.foster_home_id)
+        .executeAndFetch(Patient.class);
+    }
+  }
+
 }
