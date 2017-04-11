@@ -187,4 +187,50 @@ public class Patient  {
     }
   }
 
+  public List<Insurance> getInsurances() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM insurance WHERE patient_id = :patient_id";
+      return con.createQuery(sql)
+        .addParameter("patient_id", this.patient_id)
+        .executeAndFetch(Insurance.class);
+    }
+  }
+
+  public List<Guardian> getGuardians() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM guardians WHERE patient_id = :patient_id";
+      return con.createQuery(sql)
+        .addParameter("patient_id", this.patient_id)
+        .executeAndFetch(Guardian.class);
+    }
+  }
+
+  public List<Medication> getMedications() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM medications WHERE patient_id = :patient_id";
+      return con.createQuery(sql)
+        .addParameter("patient_id", this.patient_id)
+        .executeAndFetch(Medication.class);
+    }
+  }
+
+  public List<MedHistory> getMedHistories() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM med_histories WHERE patient_id = :patient_id";
+      return con.createQuery(sql)
+        .addParameter("patient_id", this.patient_id)
+        .executeAndFetch(MedHistory.class);
+    }
+  }
+
+  public List<Task> getTasks() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM tasks WHERE patient_id = :patient_id";
+      return con.createQuery(sql)
+        .addParameter("patient_id", this.patient_id)
+        .executeAndFetch(Task.class);
+    }
+  }
+
+
 }
