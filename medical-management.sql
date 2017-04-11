@@ -281,7 +281,7 @@ ALTER SEQUENCE patients_patient_id_seq OWNED BY patients.patient_id;
 CREATE TABLE tasks (
     task_id integer NOT NULL,
     foster_id integer NOT NULL,
-    task_name integer NOT NULL,
+    task_name character varying NOT NULL,
     type character varying NOT NULL,
     recurring boolean NOT NULL,
     frequency interval NOT NULL,
