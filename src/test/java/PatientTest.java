@@ -89,4 +89,24 @@ Date testDate2 = new Date (30, 3, 12);
      assertEquals(testPatient.getInsurances().size(), 2);
    }
 
+   @Test
+   public void getGuardians_returnsGuardiansByPatientId() {
+     Guardian testGuardian = new Guardian(testPatient.getPatientId(),"John","Doe","Father","123 Sesame St.", "Portland","OR",92701,"503-123-4321");
+     testGuardian.save();
+     Guardian testGuardian2 = new Guardian(testPatient.getPatientId(),"John","Doe","Father","123 Sesame St.", "Portland","OR",92701,"503-123-4321");
+     testGuardian.save();
+     Guardian[] guardians = new Guardian[] {testGuardian, testGuardian2};
+     assertEquals(testPatient.getGuardians().size(), 2);
+   }
+
+   @Test
+   public void getMedications_returnsMedicationsByPatientId() {
+       Medication testMedication = new Medication(testPatient.getPatientId(), "Tylenol", "200mg", "Mornings at 8");
+       testMedication.save();
+       Medication testMedication2 = new Medication(testPatient.getPatientId(), "Tylenol", "200mg", "Mornings at 8");
+       testMedication2.save();
+       Medication[] medications = new Medication[] {testMedication, testMedication2};
+       assertEquals(testPatient.getMedications().size(), 2);
+   }
+
 }
