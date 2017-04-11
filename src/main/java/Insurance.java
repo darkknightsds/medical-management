@@ -101,8 +101,7 @@ public class Insurance {
     }
   }
 
-  public void updateInsurance(int patient_id, String insurance_provider, String insurance_policy, String va_policy, String medicare_policy, String medicaid_policy) {
-    this.patient_id = patient_id;
+  public void updateInsurance(String insurance_provider, String insurance_policy, String va_policy, String medicare_policy, String medicaid_policy) {
     this.insurance_provider = insurance_provider;
     this.insurance_policy = insurance_policy;
     this.va_policy = va_policy;
@@ -110,15 +109,23 @@ public class Insurance {
     this.medicaid_policy = medicaid_policy;
 
     try (Connection con = DB.sql2o.open()) {
-      String sql = "UPDATE insurance SET (patient_id, insurance_provider, insurance_policy, va_policy, medicare_policy, medicaid_policy) = (:patient_id, :insurance_provider, :insurance_policy, :va_policy, :medicare_policy, :medicaid_policy) WHERE insurance_id = :insurance_id;";
+      String sql = "UPDATE insurance SET (insurance_provider, insurance_policy, va_policy, medicare_policy, medicaid_policy) = (:insurance_provider, :insurance_policy, :va_policy, :medicare_policy, :medicaid_policy) WHERE insurance_id = :insurance_id;";
       con.createQuery(sql)
         .addParameter("insurance_id", this.insurance_id)
-        .addParameter("patient_id", patient_id)
         .addParameter("insurance_provider", insurance_provider)
         .addParameter("insurance_policy", insurance_policy)
         .addParameter("va_policy", va_policy)
         .addParameter("medicare_policy", medicare_policy)
         .addParameter("medicaid_policy", medicaid_policy)
+        .executeUpdate();
+    }
+  }
+
+  public void deleteInsurance() {
+    try (Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM insurance WHERE insurance_id = :insurance_id;";
+      con.createQuery(sql)
+        .addParameter("insurance_id", this.insurance_id)
         .executeUpdate();
     }
   }
