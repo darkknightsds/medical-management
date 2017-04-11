@@ -73,17 +73,4 @@ public class GuardianTest {
     Guardian guardian = new Guardian(2,"John","Doe","Father","123 Sesame St.", "Portland","OR",92701,"503-123-4321");
     assertEquals("503-123-4321", guardian.getTelephone());
   }
-
-  // @Test
-  // public void all_returnsAllInstancesOfGuardian_true() {
-  //   Guardian firstGuardian = new Guardian(2,"John","Doe","Father","123 Sesame St.", "Portland","OR",92701,"503-123-4321");
-  //   firstGuardian.save();
-  //   Guardian secondGuardian = new Guardian(3,"John","Doe","Father","123 Sesame St.", "Portland","WA",92702,"503-123-4321");
-  //   secondGuardian.save();
-  //   assertEquals(true, Guardian.all().get(0).equals(firstGuardian));
-  //   assertEquals(true, Guardian.all().get(1).equals(secondGuardian));
-  // }
-
-
-
 }
