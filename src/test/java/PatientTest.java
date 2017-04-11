@@ -62,7 +62,7 @@ Date testDate2 = new Date (30, 3, 12);
    @Test
    public void save_assignsIdToPatient() {
      Patient savedPatient = Patient.all().get(0);
-     assertEquals(testPatient.getId(),savedPatient.getId());
+     assertEquals(testPatient.getPatientId(),savedPatient.getPatientId());
    }
 
 
