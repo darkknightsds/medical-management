@@ -23,7 +23,6 @@ public class FosterHome
   private String telephone;
 
   public FosterHome(int user_id, String facility_name, String primary_first, String primary_last, String address, String city, String state, int zip, String telephone) {
-    this.foster_home_id = foster_home_id;
     this.user_id = user_id;
     this.facility_name = facility_name;
     this.primary_first = primary_first;
