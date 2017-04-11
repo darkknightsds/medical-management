@@ -79,4 +79,14 @@ Date testDate2 = new Date (30, 3, 12);
      assertEquals("Basketball", Patient.find(testPatient.getPatientId()).getHobbies());
    }
 
+   @Test
+   public void getInsurances_getsInsuranceByPatientId() {
+     Insurance testInsurance = new Insurance(testPatient.getPatientId(), "Kaiser Permanente", "239487dk", "237dhjkshjf8", "09345lkjdft", "9823749oiuhjdf");
+     testInsurance.save();
+     Insurance testInsurance2 = new Insurance(testPatient.getPatientId(), "Kaiser Permanente", "239487dk", "237dhjkshjf8", "09345lkjdft", "9823749oiuhjdf");
+     testInsurance2.save();
+     Insurance[] insurances = new Insurance[] {testInsurance, testInsurance2};
+     assertEquals(testPatient.getInsurances().size(), 2);
+   }
+
 }
