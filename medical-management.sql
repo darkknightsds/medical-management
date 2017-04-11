@@ -199,9 +199,9 @@ ALTER SEQUENCE med_histories_med_historty_id_seq OWNED BY med_histories.med_hist
 CREATE TABLE medications (
     medication_id integer NOT NULL,
     patient_id integer NOT NULL,
-    name integer NOT NULL,
-    dosage integer NOT NULL,
-    frequency integer NOT NULL
+    name character varying NOT NULL,
+    dosage character varying NOT NULL,
+    frequency character varying NOT NULL
 );
 
 
@@ -281,7 +281,7 @@ ALTER SEQUENCE patients_patient_id_seq OWNED BY patients.patient_id;
 CREATE TABLE tasks (
     task_id integer NOT NULL,
     foster_id integer NOT NULL,
-    task_name integer NOT NULL,
+    task_name character varying NOT NULL,
     type character varying NOT NULL,
     recurring boolean NOT NULL,
     frequency interval NOT NULL,
