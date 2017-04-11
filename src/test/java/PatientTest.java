@@ -65,5 +65,11 @@ Date testDate2 = new Date (30, 3, 12);
      assertEquals(testPatient.getPatientId(),savedPatient.getPatientId());
    }
 
+   @Test
+   public void find_findsPatientByPatientId() {
+     Patient secondPatient = new Patient(1, "Deborah", "Marques", testDate1, "222-222-2222", "333-33-3333", "female", testDate2, "Vienna", "Wiccan", "literature", "Providence", "Bob Ross, MD", "123-123-4567");
+     secondPatient.save();
+     assertEquals(secondPatient, Patient.find(secondPatient.getPatientId()));
+   }
 
 }

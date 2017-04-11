@@ -155,4 +155,14 @@ public class Patient  {
     }
   }
 
+  public static Patient find(int patient_id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM patients WHERE patient_id = :patient_id;";
+      Patient result  = con.createQuery(sql)
+        .addParameter("patient_id", patient_id)
+        .executeAndFetchFirst(Patient.class);
+      return result;
+    }
+  }
+
 }
