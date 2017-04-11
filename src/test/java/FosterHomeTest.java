@@ -66,5 +66,13 @@ public class FosterHomeTest {
     assertEquals(FosterHome.find(newFosterHome2.getId()), newFosterHome2);
   }
 
+  @Test
+  public void updatesFosterHomeInformation_True() {
+    FosterHome newFosterHome1 = new FosterHome(1, "Emma's Foster Home", "Emma", "Plesa", "123 Alphabet St.", "Paisley Park", "Minnesota", 71999, "777-777-1234");
+    newFosterHome1.save();
+    newFosterHome1.update("Emma's Foster Home", "Emma", "Plesa", "123 Alphabet St.", "Paisley Park", "Your Heart", 71999, "777-777-1234");
+    assertEquals("Your Heart", FosterHome.find(newFosterHome1.getId()).getState());
+  }
+
 
 }
