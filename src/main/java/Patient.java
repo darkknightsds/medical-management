@@ -165,4 +165,26 @@ public class Patient  {
     }
   }
 
+  public void update(String first_name, String last_name, Date admit_date, String telephone, String ssid, String sex, Date birth_date, String birth_place, String faith, String hobbies, String preferred_hospital, String primary_care_name, String primary_phone) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE patients SET first_name = :first_name, last_name = :last_name, admit_date = :admit_date, telephone = :telephone, ssid = :ssid, sex = :sex, birth_date = :birth_date, birth_place = :birth_place, faith = :faith, hobbies = :hobbies, preferred_hospital = :preferred_hospital, primary_care_name = :primary_care_name, primary_phone = :primary_phone WHERE patient_id = :patient_id;";
+      con.createQuery(sql)
+      .addParameter("first_name", first_name)
+      .addParameter("last_name", last_name)
+      .addParameter("admit_date", admit_date)
+      .addParameter("telephone", telephone)
+      .addParameter("ssid", ssid)
+      .addParameter("sex", sex)
+      .addParameter("birth_date", birth_date)
+      .addParameter("birth_place", birth_place)
+      .addParameter("faith", faith)
+      .addParameter("hobbies", hobbies)
+      .addParameter("preferred_hospital", preferred_hospital)
+      .addParameter("primary_care_name", primary_care_name)
+      .addParameter("primary_phone", primary_phone)
+      .addParameter("patient_id", this.patient_id)
+      .executeUpdate();
+    }
+  }
+
 }
