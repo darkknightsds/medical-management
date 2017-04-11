@@ -21,7 +21,7 @@ public class Patient  {
   private String preferred_hospital;
   private String primary_care_name;
   private String primary_phone;
-  private int id;
+  private int patient_id;
   private int foster_home_id;
 
   public Patient(int foster_home_id, String first_name, String last_name, Date admit_date, String telephone, String ssid, String sex, Date birth_date, String birth_place, String faith, String hobbies, String preferred_hospital, String primary_care_name, String primary_phone) {
@@ -97,8 +97,8 @@ public class Patient  {
     return primary_phone;
   }
 
-  public int getId() {
-    return id;
+  public int getPatientId() {
+    return patient_id;
   }
 
   @Override
@@ -126,8 +126,8 @@ public class Patient  {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO patients (foster_home_id, first_name, last_name, admit_date, telephone, ssid, sex, birth_date, birth_place, faith, hobbies, preferred_hospital, primary_care_name, primary_phone) VALUES (:foster_home_id, :first_name, :last_name, :admit_date, :telephone, :ssid, :sex, :birth_date, :birth_place, :faith, :hobbies, :preferred_hospital, :primary_care_name, primary_phone);";
-      this.id = (int) con.createQuery(sql, true)
+      String sql = "INSERT INTO patients (foster_home_id, first_name, last_name, admit_date, telephone, ssid, sex, birth_date, birth_place, faith, hobbies, preferred_hospital, primary_care_name, primary_phone) VALUES (:foster_home_id, :first_name, :last_name, :admit_date, :telephone, :ssid, :sex, :birth_date, :birth_place, :faith, :hobbies, :preferred_hospital, :primary_care_name, :primary_phone);";
+      this.patient_id = (int) con.createQuery(sql, true)
         .addParameter("foster_home_id", this.foster_home_id)
         .addParameter("first_name", this.first_name)
         .addParameter("last_name", this.last_name)
