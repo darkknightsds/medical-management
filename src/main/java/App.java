@@ -18,6 +18,12 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/users/new", (request, response) -> {
+       Map<String, Object> model = new HashMap<String, Object>();
+       model.put("template", "templates/user-form.vtl");
+       return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     post("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       String username = request.queryParams("username");
@@ -45,11 +51,14 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    // User user = request.session().attribute("user");
-
-    get("/users/new", (request, response) -> {
+    post("/users/new", (request, response) -> {
        Map<String, Object> model = new HashMap<String, Object>();
-       model.put("template", "templates/user-form.vtl");
+       String username = request.queryParams("username");
+       String password = request.queryParams("password");
+       User newUser = new User(username, password);
+       newUser.save();
+       String url = String.format("/users/" + newUser.getId());
+       response.redirect(url);
        return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -59,14 +68,21 @@ public class App {
        return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/users/new", (request, response) -> {
+    get("/users/:userid", (request, response) -> {
        Map<String, Object> model = new HashMap<String, Object>();
-       String username = request.queryParams("username");
-       String password = request.queryParams("password");
-       User newUser = new User(username, password);
-       newUser.save();
-       String url = String.format("/users/" + newUser.getId());
-       response.redirect(url);
+       User user = request.session().attribute("user");
+       User thisUser = User.find(Integer.parseInt(request.params(":id")));
+       model.put("user", thisUser);
+       model.put("template", "templates/user.vtl");
+       return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/users/:userid/facilities/:facilityid", (request, response) -> {
+       Map<String, Object> model = new HashMap<String, Object>();
+       User user = request.session().attribute("user");
+       User thisUser = User.find(Integer.parseInt(request.params(":id")));
+       model.put("user", thisUser);
+       model.put("template", "templates/user.vtl");
        return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
   }
