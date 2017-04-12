@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-md-5">
-      <h2>User: $User.getUsername()</h2>
+      <h2>User: $user.getUsername()</h2>
       <ul>
         #foreach($fosterhome in $user.getFosterHomes())
         <li><a href="#">$fosterhome.getFacilityName()</a></li>
+        #end
       </ul>
     </div>
 
@@ -44,7 +45,7 @@
         </div>
         <div class="form-control">
           <label for="telephone">Telephone</label>
-          <input type="button" name="telephone" value="">
+          <input type="tel" name="telephone" value="">
         </div>
         <button type="submit" class="btn btn-success" name="button">Submit</button>
       </form>
