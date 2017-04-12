@@ -280,14 +280,11 @@ ALTER SEQUENCE patients_patient_id_seq OWNED BY patients.patient_id;
 
 CREATE TABLE tasks (
     task_id integer NOT NULL,
-    foster_id integer NOT NULL,
-    task_name character varying NOT NULL,
-    type character varying NOT NULL,
-    recurring boolean NOT NULL,
-    frequency interval NOT NULL,
-    "time" time without time zone NOT NULL,
-    date date NOT NULL,
-    completed boolean NOT NULL
+    patient_id integer,
+    description character varying,
+    date_time character varying,
+    patient_name character varying,
+    timestamp_date_time timestamp without time zone
 );
 
 
@@ -498,7 +495,7 @@ SELECT pg_catalog.setval('patients_patient_id_seq', 1, false);
 -- Data for Name: tasks; Type: TABLE DATA; Schema: public; Owner: t1k1
 --
 
-COPY tasks (task_id, foster_id, task_name, type, recurring, frequency, "time", date, completed) FROM stdin;
+COPY tasks (task_id, patient_id, description, date_time, patient_name, timestamp_date_time) FROM stdin;
 \.
 
 
@@ -573,11 +570,11 @@ ALTER TABLE ONLY patients
 
 
 --
--- Name: tasks tasks_pk; Type: CONSTRAINT; Schema: public; Owner: t1k1
+-- Name: tasks tasks_pkey; Type: CONSTRAINT; Schema: public; Owner: t1k1
 --
 
 ALTER TABLE ONLY tasks
-    ADD CONSTRAINT tasks_pk PRIMARY KEY (task_id);
+    ADD CONSTRAINT tasks_pkey PRIMARY KEY (task_id);
 
 
 --
