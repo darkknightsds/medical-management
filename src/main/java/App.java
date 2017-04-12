@@ -42,9 +42,20 @@ public class App {
 
     // User user = request.session().attribute("user");
 
-    get("/patients/new", (request, response) -> {
+    get("/users/new", (request, response) -> {
        Map<String, Object> model = new HashMap<String, Object>();
-       model.put("template", "templates/patient-form.vtl");
+       model.put("template", "templates/user-form.vtl");
+       return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/users/new", (request, response) -> {
+       Map<String, Object> model = new HashMap<String, Object>();
+       String username = request.queryParams("username");
+       String password = request.queryParams("password");
+       User newUser = new User(username, password);
+       newUser.save();
+       String url = String.format("/" + newUser.getId());
+       response.redirect(url);
        return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
   }
