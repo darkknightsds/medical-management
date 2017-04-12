@@ -109,4 +109,14 @@ Date testDate2 = new Date (30, 3, 12);
        assertEquals(testPatient.getMedications().size(), 2);
    }
 
+   @Test
+   public void getMedHistories_returnsMedHistoryByPatientId() {
+     MedHistory testMedHistory = new MedHistory(testPatient.getPatientId(), "recent patient", "Patient 0", testDate1, "tylenol", true);
+     testMedHistory.save();
+     MedHistory testMedHistory2 = new MedHistory(testPatient.getPatientId(), "recent patient", "Patient 0", testDate1, "tylenol", true);
+     testMedHistory2.save();
+     MedHistory[] medhistories = new MedHistory[] {testMedHistory, testMedHistory2};
+     assertEquals(testPatient.getMedHistories().size(), 2);
+   }
+
 }
