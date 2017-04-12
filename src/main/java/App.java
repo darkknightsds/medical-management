@@ -23,12 +23,17 @@ public class App {
       String username = request.queryParams("username");
       String password = request.queryParams("password");
       User user = User.findByUsername(username);
-      try {
-        user = User.findByUsername(username);
-      } catch(IllegalArgumentException exception) {
+      // try {
+      //   user = User.findByUsername(username);
+      // } catch(IllegalArgumentException exception) {
+      //   String url = String.format("/invalid");
+      //   response.redirect(url);
+      // }
+      if ((user = User.findByUsername(username)) == null) {
         String url = String.format("/invalid");
         response.redirect(url);
       }
+
       if (user.getPassword().equals(password)) {
         request.session().attribute("user", user);
         String url = String.format("/users/" + user.getId());
@@ -45,6 +50,12 @@ public class App {
     get("/users/new", (request, response) -> {
        Map<String, Object> model = new HashMap<String, Object>();
        model.put("template", "templates/user-form.vtl");
+       return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/invalid", (request, response) -> {
+       Map<String, Object> model = new HashMap<String, Object>();
+       model.put("template", "templates/invalid.vtl");
        return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
