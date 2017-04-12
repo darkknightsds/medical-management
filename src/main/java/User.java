@@ -7,7 +7,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.sql.Timestamp;
 
-
 public class User
 // implements DatabaseManagement
  {
@@ -71,6 +70,19 @@ public class User
     }
   }
 
+  public static User findByUsername(String username) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM users where username = :username;";
+      User newUser = con.createQuery(sql)
+        .addParameter("username", username)
+        .executeAndFetchFirst(User.class);
+      if (newUser == null) {
+        throw new IllegalArgumentException("That user doesn't exist. Please create a new account to proceed.");
+      }
+      return newUser;
+    }
+  }
+
   public void update(String username, String password) {
     this.username = username;
     this.password = password;
@@ -101,6 +113,10 @@ public class User
         .addParameter("user_id", this.user_id)
         .executeAndFetch(FosterHome.class);
     }
+  }
+
+  public void getSession() {
+
   }
 
 }

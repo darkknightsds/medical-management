@@ -159,7 +159,7 @@ ALTER SEQUENCE insurance_insurance_id_seq OWNED BY insurance.insurance_id;
 --
 
 CREATE TABLE med_histories (
-    med_historty_id integer NOT NULL,
+    med_history_id integer NOT NULL,
     patient_id integer NOT NULL,
     type character varying NOT NULL,
     name character varying NOT NULL,
@@ -172,10 +172,10 @@ CREATE TABLE med_histories (
 ALTER TABLE med_histories OWNER TO t1k1;
 
 --
--- Name: med_histories_med_historty_id_seq; Type: SEQUENCE; Schema: public; Owner: t1k1
+-- Name: med_histories_med_history_id_seq; Type: SEQUENCE; Schema: public; Owner: t1k1
 --
 
-CREATE SEQUENCE med_histories_med_historty_id_seq
+CREATE SEQUENCE med_histories_med_history_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -183,13 +183,13 @@ CREATE SEQUENCE med_histories_med_historty_id_seq
     CACHE 1;
 
 
-ALTER TABLE med_histories_med_historty_id_seq OWNER TO t1k1;
+ALTER TABLE med_histories_med_history_id_seq OWNER TO t1k1;
 
 --
--- Name: med_histories_med_historty_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: t1k1
+-- Name: med_histories_med_history_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: t1k1
 --
 
-ALTER SEQUENCE med_histories_med_historty_id_seq OWNED BY med_histories.med_historty_id;
+ALTER SEQUENCE med_histories_med_history_id_seq OWNED BY med_histories.med_history_id;
 
 
 --
@@ -280,8 +280,7 @@ ALTER SEQUENCE patients_patient_id_seq OWNED BY patients.patient_id;
 
 CREATE TABLE tasks (
     task_id integer NOT NULL,
-    foster_id integer NOT NULL,
-    task_name character varying NOT NULL,
+    patient_id integer NOT NULL,    task_name character varying NOT NULL,
     type character varying NOT NULL,
     recurring boolean NOT NULL,
     frequency interval NOT NULL,
@@ -370,10 +369,10 @@ ALTER TABLE ONLY insurance ALTER COLUMN insurance_id SET DEFAULT nextval('insura
 
 
 --
--- Name: med_histories med_historty_id; Type: DEFAULT; Schema: public; Owner: t1k1
+-- Name: med_histories med_history_id; Type: DEFAULT; Schema: public; Owner: t1k1
 --
 
-ALTER TABLE ONLY med_histories ALTER COLUMN med_historty_id SET DEFAULT nextval('med_histories_med_historty_id_seq'::regclass);
+ALTER TABLE ONLY med_histories ALTER COLUMN med_history_id SET DEFAULT nextval('med_histories_med_history_id_seq'::regclass);
 
 
 --
@@ -453,15 +452,15 @@ SELECT pg_catalog.setval('insurance_insurance_id_seq', 1, false);
 -- Data for Name: med_histories; Type: TABLE DATA; Schema: public; Owner: t1k1
 --
 
-COPY med_histories (med_historty_id, patient_id, type, name, date, medications, current) FROM stdin;
+COPY med_histories (med_history_id, patient_id, type, name, date, medications, current) FROM stdin;
 \.
 
 
 --
--- Name: med_histories_med_historty_id_seq; Type: SEQUENCE SET; Schema: public; Owner: t1k1
+-- Name: med_histories_med_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: t1k1
 --
 
-SELECT pg_catalog.setval('med_histories_med_historty_id_seq', 1, false);
+SELECT pg_catalog.setval('med_histories_med_history_id_seq', 1, false);
 
 
 --
@@ -553,7 +552,7 @@ ALTER TABLE ONLY insurance
 --
 
 ALTER TABLE ONLY med_histories
-    ADD CONSTRAINT med_histories_pk PRIMARY KEY (med_historty_id);
+    ADD CONSTRAINT med_histories_pk PRIMARY KEY (med_history_id);
 
 
 --
