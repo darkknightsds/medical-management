@@ -54,7 +54,7 @@ public class App {
        String password = request.queryParams("password");
        User newUser = new User(username, password);
        newUser.save();
-       String url = String.format("/" + newUser.getId());
+       String url = String.format("/users/" + newUser.getId());
        response.redirect(url);
        return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
