@@ -11,6 +11,7 @@ public class App {
 
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
+    String layout2 = "templates/layout-2.vtl";
 
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
@@ -74,7 +75,7 @@ public class App {
        User thisUser = User.find(Integer.parseInt(request.params(":userid")));
        model.put("user", thisUser);
        model.put("template", "templates/user.vtl");
-       return new ModelAndView(model, layout);
+       return new ModelAndView(model, layout2);
     }, new VelocityTemplateEngine());
 
     // get("/users/:userid/facilities/:facilityid", (request, response) -> {
