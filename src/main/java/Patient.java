@@ -10,11 +10,11 @@ import java.sql.Timestamp;
 public class Patient  {
   private String first_name;
   private String last_name;
-  private Date admit_date;
+  private String admit_date;
   private String telephone;
   private String ssid;
   private String sex;
-  private Date birth_date;
+  private String birth_date;
   private String birth_place;
   private String faith;
   private String hobbies;
@@ -24,7 +24,7 @@ public class Patient  {
   private int patient_id;
   private int foster_home_id;
 
-  public Patient(int foster_home_id, String first_name, String last_name, Date admit_date, String telephone, String ssid, String sex, Date birth_date, String birth_place, String faith, String hobbies, String preferred_hospital, String primary_care_name, String primary_phone) {
+  public Patient(int foster_home_id, String first_name, String last_name, String admit_date, String telephone, String ssid, String sex, String birth_date, String birth_place, String faith, String hobbies, String preferred_hospital, String primary_care_name, String primary_phone) {
     this.foster_home_id = foster_home_id;
     this.first_name = first_name;
     this.last_name = last_name;
@@ -53,7 +53,7 @@ public class Patient  {
     return last_name;
   }
 
-  public Date getAdmitDate() {
+  public String getAdmitDate() {
     return admit_date;
   }
 
@@ -69,7 +69,7 @@ public class Patient  {
     return sex;
   }
 
-  public Date getBirthDate() {
+  public String getBirthDate() {
     return birth_date;
   }
 
@@ -165,7 +165,7 @@ public class Patient  {
     }
   }
 
-  public void update(String first_name, String last_name, Date admit_date, String telephone, String ssid, String sex, Date birth_date, String birth_place, String faith, String hobbies, String preferred_hospital, String primary_care_name, String primary_phone) {
+  public void update(String first_name, String last_name, String admit_date, String telephone, String ssid, String sex, String birth_date, String birth_place, String faith, String hobbies, String preferred_hospital, String primary_care_name, String primary_phone) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "UPDATE patients SET first_name = :first_name, last_name = :last_name, admit_date = :admit_date, telephone = :telephone, ssid = :ssid, sex = :sex, birth_date = :birth_date, birth_place = :birth_place, faith = :faith, hobbies = :hobbies, preferred_hospital = :preferred_hospital, primary_care_name = :primary_care_name, primary_phone = :primary_phone WHERE patient_id = :patient_id;";
       con.createQuery(sql)

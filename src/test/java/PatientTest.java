@@ -11,14 +11,11 @@ import java.sql.Timestamp;
 
 public class PatientTest {
 
-Date testDate1 = new Date (102, 9, 22);
-Date testDate2 = new Date (30, 3, 12);
-
   private Patient testPatient;
 
   @Before
   public void setUp() {
-    testPatient = new Patient(1, "Bob", "Jones", testDate1, "222-222-2222", "111-11-1111", "female", testDate2, "Saskatchewan", "Hindu", "sports", "Legacy Emanuel", "Bob Ross, MD", "123-123-4567");
+    testPatient = new Patient(1, "Bob", "Jones", "12/12/12", "222-222-2222", "111-11-1111", "female", "03/15/30", "Saskatchewan", "Hindu", "sports", "Legacy Emanuel", "Bob Ross, MD", "123-123-4567");
     testPatient.save();
   }
 
@@ -35,11 +32,11 @@ Date testDate2 = new Date (30, 3, 12);
      assertEquals(1, testPatient.getFosterHomeId());
      assertEquals("Bob",testPatient.getFirstName());
      assertEquals("Jones", testPatient.getLastName());
-     assertEquals(testDate1, testPatient.getAdmitDate());
+     assertEquals("12/12/12", testPatient.getAdmitDate());
      assertEquals("222-222-2222", testPatient.getTelephone());
      assertEquals("111-11-1111", testPatient.getSsid());
      assertEquals("female", testPatient.getSex());
-     assertEquals(testDate2, testPatient.getBirthDate());
+     assertEquals("03/15/30", testPatient.getBirthDate());
      assertEquals("Saskatchewan", testPatient.getBirthPlace());
      assertEquals("Hindu", testPatient.getFaith());
      assertEquals("sports", testPatient.getHobbies());
@@ -50,7 +47,7 @@ Date testDate2 = new Date (30, 3, 12);
 
    @Test
    public void equals_returnsTrueIfValuesAreSame() {
-     Patient otherPatient = new Patient(1, "Bob", "Jones", testDate1, "222-222-2222", "111-11-1111", "female", testDate2, "Saskatchewan", "Hindu", "sports", "Legacy Emanuel", "Bob Ross, MD", "123-123-4567");
+     Patient otherPatient = new Patient(1, "Bob", "Jones", "12/12/12", "222-222-2222", "111-11-1111", "female", "03/15/30", "Saskatchewan", "Hindu", "sports", "Legacy Emanuel", "Bob Ross, MD", "123-123-4567");
      assertTrue(otherPatient.equals(testPatient));
    }
 
@@ -67,14 +64,14 @@ Date testDate2 = new Date (30, 3, 12);
 
    @Test
    public void find_findsPatientByPatientId() {
-     Patient secondPatient = new Patient(1, "Deborah", "Marques", testDate1, "222-222-2222", "333-33-3333", "female", testDate2, "Vienna", "Wiccan", "literature", "Providence", "Bob Ross, MD", "123-123-4567");
+     Patient secondPatient = new Patient(1, "Deborah", "Marques", "12/12/12", "222-222-2222", "333-33-3333", "female", "03/15/30", "Vienna", "Wiccan", "literature", "Providence", "Bob Ross, MD", "123-123-4567");
      secondPatient.save();
      assertEquals(secondPatient, Patient.find(secondPatient.getPatientId()));
    }
 
    @Test
    public void update_updatesPatientInfo() {
-     testPatient.update("Roberta", "Jones", testDate1, "222-222-2222", "111-11-1111", "female", testDate2, "Saskatchewan", "Hindu", "Basketball", "Legacy Emanuel", "Bob Ross, MD", "123-123-4567");
+     testPatient.update("Roberta", "Jones", "12/12/12", "222-222-2222", "111-11-1111", "female", "03/15/30", "Saskatchewan", "Hindu", "Basketball", "Legacy Emanuel", "Bob Ross, MD", "123-123-4567");
      assertEquals("Roberta", Patient.find(testPatient.getPatientId()).getFirstName());
      assertEquals("Basketball", Patient.find(testPatient.getPatientId()).getHobbies());
    }
@@ -111,9 +108,9 @@ Date testDate2 = new Date (30, 3, 12);
 
    @Test
    public void getMedHistories_returnsMedHistoryByPatientId() {
-     MedHistory testMedHistory = new MedHistory(testPatient.getPatientId(), "recent patient", "Patient 0", testDate1, "tylenol", true);
+     MedHistory testMedHistory = new MedHistory(testPatient.getPatientId(), "recent patient", "Patient 0", "12/12/12", "tylenol", true);
      testMedHistory.save();
-     MedHistory testMedHistory2 = new MedHistory(testPatient.getPatientId(), "recent patient", "Patient 0", testDate1, "tylenol", true);
+     MedHistory testMedHistory2 = new MedHistory(testPatient.getPatientId(), "recent patient", "Patient 0", "12/12/12", "tylenol", true);
      testMedHistory2.save();
      MedHistory[] medhistories = new MedHistory[] {testMedHistory, testMedHistory2};
      assertEquals(testPatient.getMedHistories().size(), 2);
