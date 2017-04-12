@@ -102,4 +102,35 @@ public class MedHistory
         .executeAndFetchFirst(MedHistory.class);
     }
   }
+
+  public void updateMedHistory(int patient_id, String type, String name, Date date, String medications, boolean current) {
+    this.patient_id = patient_id;
+    this.type = type;
+    this.name = name;
+    this.date = date;
+    this.medications = medications;
+    this.current=current;
+
+    try (Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE med_histories SET (patient_id, type, name, date, medications, current) = (:patient_id, :type, :name, :date, :medications, :current) WHERE med_history_id = :med_history_id;";
+      con.createQuery(sql)
+        .addParameter("med_history_id", this.med_history_id)
+        .addParameter("patient_id",patient_id )
+        .addParameter("type",type )
+        .addParameter("name", name)
+        .addParameter("date", date)
+        .addParameter("medications", medications)
+        .addParameter("current", current)
+        .executeUpdate();
+    }
+  }
+
+  public void deleteMedHistory() {
+    try (Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM med_histories WHERE med_history_id = :med_history_id;";
+      con.createQuery(sql)
+        .addParameter("med_history_id", this.med_history_id)
+        .executeUpdate();
+    }
+  }
 }

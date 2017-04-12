@@ -84,3 +84,8 @@ button {
   margin: 0px;
   margin-left: 3px;
 }
+
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}

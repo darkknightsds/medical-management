@@ -1,0 +1,29 @@
+<h2>Medical History</h2>
+
+<form class="" action="/users/:userid/facilities/:facilityid/residents/:residentid/medhistory/new" method="post">
+  <div class="form-control">
+    <label for="patient_id">Patient ID</label>
+    <input type="text" name="patient_id">
+  </div>
+  <div class="form-control">
+    <label for="type">Type</label>
+    <input type="text" name="type">
+  </div>
+  <div class="form-control">
+    <label for="name"> Name </label>
+    <input type="text" name="name">
+  </div>
+  <div class="form-control">
+    <label for="date">Date</label>
+    <input type="date" name="date" placeholder="YYYY-MM-DD">
+  </div>
+  <div class="form-control">
+    <label for="medications">Medications</label>
+    <input type="text" name="medications">
+  </div>
+  <div class="form-control">
+    <label for="current">Current?</label>
+    <input type="radio" name="current" value="yes">
+    <input type="radio" name="current" value="no">
+  </div>
+</form>
