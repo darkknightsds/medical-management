@@ -1,21 +1,18 @@
-<!--index.vtl-->
-<h1>Thanks for choosing Care CTRL!</h1>
+<!--user-form.vtl-->
+<h2>Add new user</h2>
 <div class="row">
   <div class="col-md-6 col-centered">
     <div class="well">
-      <form action="/" method="post">
-        <h3>Login</h3>
+      <form action="/users/new" method="post">
         <div class="form-group">
-          <label for="username">Username</label>
+          <label for="username">New Username</label>
           <input id="username" name="username" type="text" class="form-control" required>
           <label for="password">Password</label>
           <input id="password" name="password" type="password" class="form-control" required>
         </div>
-        <button type="submit" class="btn btn-primary">login</button>
+      <button type="submit" class="btn btn-success">Add New User</button>
       </form>
     </div>
   </div>
 </div>
-<br>
-<a href="/users/new">Create new account</a>
-<!--index.vtl-->
+<!--user-form.vtl-->

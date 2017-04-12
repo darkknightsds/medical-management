@@ -59,6 +59,14 @@ public class UserTest {
     assertEquals(User.find(newUser2.getId()), newUser2);
   }
 
+  public void findsUserByName_ReturnsSecondUser() {
+    User newUser1 = new User("biglove69", "xxx123");
+    User newUser2 = new User("biglove69", "xxx123");
+    newUser1.save();
+    newUser2.save();
+    assertEquals(User.findByUsername(newUser2.getUsername()), newUser2);
+  }
+
   @Test
   public void updatesUserInformation_True() {
     User newUser1 = new User("biglove69", "xxx123");

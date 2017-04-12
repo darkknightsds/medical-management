@@ -1,0 +1,91 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
+
+body {
+  background-color: #E5E7E6;
+  height: 100%;
+}
+
+/*#content {
+  height: inherit;
+  background-color: white;
+}*/
+
+.page-title {
+  font-size: 48px;
+}
+
+.well {
+  background-color: white;
+  box-shadow: 1px 1px 5px black;
+}
+
+.logo {
+  font-family: 'Indie Flower';
+  font-size: 60px;
+  text-decoration: none;
+}
+
+#home-icon {
+  width: 50px;
+  height: 50px;
+  filter: invert(100%);
+  margin: 0px;
+}
+
+#banner-logo {
+  width: 200px;
+  height: 200px;
+}
+
+.table-list {
+  padding-top: 5px;
+}
+
+h1, h2 {
+  color: #212922;
+  font-family: 'Oswald', sans-serif;
+  text-decoration: underline;
+}
+
+h3, h4 {
+  font-family: 'Raleway', sans-serif;
+}
+
+.center-text {
+  text-align: center;
+}
+
+
+button {
+  margin: 15px;
+}
+
+.form-inline label {
+  padding-right: 10px;
+}
+
+.form-inline input {
+  margin-right: 10px;
+}
+
+.list-item {
+  font-size: 18px;
+}
+
+.review-edit {
+  float: right;
+  margin-top: -5px;
+  margin-right: -5px;
+}
+
+.search-btn {
+  margin: 0px;
+  margin-left: 3px;
+}
+
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
