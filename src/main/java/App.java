@@ -78,13 +78,15 @@ public class App {
        return new ModelAndView(model, layout2);
     }, new VelocityTemplateEngine());
 
-    // get("/users/:userid/facilities/:facilityid", (request, response) -> {
-    //    Map<String, Object> model = new HashMap<String, Object>();
-    //    User user = request.session().attribute("user");
-    //    User thisUser = User.find(Integer.parseInt(request.params(":id")));
-    //    model.put("user", thisUser);
-    //    model.put("template", "templates/user.vtl");
-    //    return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
+    get("/users/:userid/facilities/:facilityid", (request, response) -> {
+       Map<String, Object> model = new HashMap<String, Object>();
+       User user = request.session().attribute("user");
+       User thisUser = User.find(Integer.parseInt(request.params(":userid")));
+       FosterHome thisFacility = FosterHome.find(Integer.parseInt(request.params(":facilityid")));
+       model.put("user", thisUser);
+       model.put("facility", thisFacility);
+       model.put("template", "templates/facility.vtl");
+       return new ModelAndView(model, layout2);
+    }, new VelocityTemplateEngine());
   }
 }
