@@ -42,12 +42,12 @@ public class TaskTest {
     testTask1.save();
     Task testTask2 = new Task(testPatient.getPatientId(), "Give Bob a shower.", "2017-04-04 13:30");
     testTask2.save();
-    Task testTask3 = new Task(testPatient.getPatientId(), "Give Bob a shower.", "2017-04-04 21:30");
+    Task testTask3 = new Task(testPatient.getPatientId(), "Give Bob a shower.", "2017-04-04 11:30");
     testTask3.save();
     Task testTask4 = new Task(testPatient.getPatientId(), "Give Bob a shower.", "2017-04-04 22:30");
     testTask4.save();
     List<Task> topTasks = Task.getTopTasks();
-    assertTrue(topTasks.get(0).equals(testTask2));
+    assertTrue(topTasks.get(0).equals(testTask3));
   }
 
 
