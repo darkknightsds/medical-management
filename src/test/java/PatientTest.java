@@ -79,4 +79,44 @@ Date testDate2 = new Date (30, 3, 12);
      assertEquals("Basketball", Patient.find(testPatient.getPatientId()).getHobbies());
    }
 
+   @Test
+   public void getInsurances_getsInsuranceByPatientId() {
+     Insurance testInsurance = new Insurance(testPatient.getPatientId(), "Kaiser Permanente", "239487dk", "237dhjkshjf8", "09345lkjdft", "9823749oiuhjdf");
+     testInsurance.save();
+     Insurance testInsurance2 = new Insurance(testPatient.getPatientId(), "Kaiser Permanente", "239487dk", "237dhjkshjf8", "09345lkjdft", "9823749oiuhjdf");
+     testInsurance2.save();
+     Insurance[] insurances = new Insurance[] {testInsurance, testInsurance2};
+     assertEquals(testPatient.getInsurances().size(), 2);
+   }
+
+   @Test
+   public void getGuardians_returnsGuardiansByPatientId() {
+     Guardian testGuardian = new Guardian(testPatient.getPatientId(),"John","Doe","Father","123 Sesame St.", "Portland","OR",92701,"503-123-4321");
+     testGuardian.save();
+     Guardian testGuardian2 = new Guardian(testPatient.getPatientId(),"John","Doe","Father","123 Sesame St.", "Portland","OR",92701,"503-123-4321");
+     testGuardian.save();
+     Guardian[] guardians = new Guardian[] {testGuardian, testGuardian2};
+     assertEquals(testPatient.getGuardians().size(), 2);
+   }
+
+   @Test
+   public void getMedications_returnsMedicationsByPatientId() {
+       Medication testMedication = new Medication(testPatient.getPatientId(), "Tylenol", "200mg", "Mornings at 8");
+       testMedication.save();
+       Medication testMedication2 = new Medication(testPatient.getPatientId(), "Tylenol", "200mg", "Mornings at 8");
+       testMedication2.save();
+       Medication[] medications = new Medication[] {testMedication, testMedication2};
+       assertEquals(testPatient.getMedications().size(), 2);
+   }
+
+   @Test
+   public void getMedHistories_returnsMedHistoryByPatientId() {
+     MedHistory testMedHistory = new MedHistory(testPatient.getPatientId(), "recent patient", "Patient 0", testDate1, "tylenol", true);
+     testMedHistory.save();
+     MedHistory testMedHistory2 = new MedHistory(testPatient.getPatientId(), "recent patient", "Patient 0", testDate1, "tylenol", true);
+     testMedHistory2.save();
+     MedHistory[] medhistories = new MedHistory[] {testMedHistory, testMedHistory2};
+     assertEquals(testPatient.getMedHistories().size(), 2);
+   }
+
 }
