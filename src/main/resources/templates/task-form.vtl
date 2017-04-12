@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h2>Add a Task</h2>
+    <div class="well">
+      <form action="/users/:userid/facilities/:facilityid/residents/:residentid/tasks/new" method="post">
+
+        <div class="form-group">
+          <label for="release" class="col-md-2 control-label">Add Date and Time</label>
+          <div class="input-group date form_datetime col-md-5" data-date-format="yyyy-mm-dd hh:ii" data-link-field="dtp_input1">
+            <input class="form-control" type="text" value="" readonly name="releaseDate" id="releaseDate">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+          </div>
+          <input type="hidden" id="dtp_input1" value="" /><br/>
+        </div>
+        <script type="text/javascript">
+          $('.form_datetime').datetimepicker({
+              weekStart: 1,
+              todayBtn:  1,
+              autoclose: 1,
+              todayHighlight: 1,
+              startView: 2,
+              forceParse: 0,
+              showMeridian: 1
+          });
+        </script>
+        <button type="submit" class="btn btn-primary">Add Movie</button>
+      </form>
+    </div>
+  </div>
+</div>
