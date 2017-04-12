@@ -76,9 +76,9 @@ public class User
       User newUser = con.createQuery(sql)
         .addParameter("username", username)
         .executeAndFetchFirst(User.class);
-      if (newUser == null) {
-        throw new IllegalArgumentException("That user doesn't exist. Please create a new account to proceed.");
-      }
+      // if (newUser == null) {
+      //   throw new IllegalArgumentException("That user doesn't exist. Please create a new account to proceed.");
+      // }
       return newUser;
     }
   }
