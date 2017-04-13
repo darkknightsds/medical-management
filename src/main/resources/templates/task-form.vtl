@@ -2,12 +2,15 @@
   <div class="col-md-8 col-md-offset-2">
     <h2>Add a Task</h2>
     <div class="well">
-      <form action="/users/:userid/facilities/:facilityid/residents/:residentid/tasks/new" method="post">
+      <form action="/users/$user.getId()/facilities/$facility.getId()/residents/$resident.getPatientId()/tasks/new" method="post">
+
+      <label>Add Task Description</label>
+      <textarea class="form-control" name="description" rows="8" cols="40" required></textarea>
 
         <div class="form-group">
           <label for="release" class="col-md-2 control-label">Add Date and Time</label>
           <div class="input-group date form_datetime col-md-5" data-date-format="yyyy-mm-dd hh:ii" data-link-field="dtp_input1">
-            <input class="form-control" type="text" value="" readonly name="releaseDate" id="releaseDate">
+            <input class="form-control" type="text" value="" readonly name="date_time" id="date_time">
             <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
           </div>
           <input type="hidden" id="dtp_input1" value="" /><br/>
@@ -23,7 +26,7 @@
               showMeridian: 1
           });
         </script>
-        <button type="submit" class="btn btn-primary">Add Movie</button>
+        <button type="submit" class="btn btn-primary">Add Task</button>
       </form>
     </div>
   </div>

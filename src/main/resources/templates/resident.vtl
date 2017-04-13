@@ -1,20 +1,37 @@
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
-  <h1>$resident.getLastName(), $resident.getFirstName()</h1>
+  <div class="col-md-6">
+    <h1>$resident.getLastName(), $resident.getFirstName()</h1>
     <div class="table-list well">
-      <h4>$resident.getLastName()</h4>
-      <h4>$resident.getFirstName()</h4>
-      <h4>$resident.getAdmitDate()</h4>
-      <h4>$resident.getTelephone()</h4>
-      <h4>$resident.getSsid()</h4>
-      <h4>$resident.getSex()</h4>
-      <h4>$resident.getBirthDate()</h4>
-      <h4>$resident.getBirthPlace()</h4>
-      <h4>$resident.getFaith()</h4>
-      <h4>$resident.getHobbies()</h4>
-      <h4>$resident.getPreferredHospital()</h4>
-      <h4>$resident.getPrimaryCareName()</h4>
-      <h4>$resident.getPrimaryPhone()</h4>
+      <h3>Resident Information</h3>
+      <h4>Last name: $resident.getLastName()</h4>
+      <h4>First name: $resident.getFirstName()</h4>
+      <h4>Admission date: $resident.getAdmitDate()</h4>
+      <h4>Telephone:$resident.getTelephone()</h4>
+      <h4>Social Security#: $resident.getSsid()</h4>
+      <h4>Sex: $resident.getSex()</h4>
+      <h4>DOB: $resident.getBirthDate()</h4>
+      <h4>Birthplace: $resident.getBirthPlace()</h4>
+      <h4>Faith $resident.getFaith()</h4>
+      <h4>Hobbies: $resident.getHobbies()</h4>
+      <h4>Preferred hospital: $resident.getPreferredHospital()</h4>
+      <h4>PCP name: $resident.getPrimaryCareName()</h4>
+      <h4>PCP phone: $resident.getPrimaryPhone()</h4>
     </div>
+  </div>
+  <div class="col-md6">
+    <h1>Tasks</h1>
+    <div class="well">
+    <ul>
+      #if ($tasks.size() > 0)
+        #foreach($task in $tasks)
+        <li>$task.getDateTime()</li>
+        <li>$task.getDescription()</li>
+        #end
+      #else
+      <h5>No tasks yet</h5>
+      #end
+    </ul>
+    <h4><a href="/users/$user.getId()/facilities/$facility.getId()/residents/$resident.getPatientId()/tasks/new">Add New Task</a></h4>
+  </div>
   </div>
 </div>

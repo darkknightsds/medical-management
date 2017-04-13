@@ -164,6 +164,7 @@ public class App {
        model.put("user", thisUser);
        model.put("facility", thisFacility);
        model.put("resident", thisResident);
+       model.put("tasks", Task.getTopTasks());
        model.put("template", "templates/resident.vtl");
        return new ModelAndView(model, layout2);
     }, new VelocityTemplateEngine());
@@ -235,7 +236,7 @@ public class App {
        return new ModelAndView(model, layout2);
     }, new VelocityTemplateEngine());
 
-    get("/users/:userid/facilities/:facilityid/residents/:residentid/taks/new", (request, response) -> {
+    get("/users/:userid/facilities/:facilityid/residents/:residentid/tasks/new", (request, response) -> {
        Map<String, Object> model = new HashMap<String, Object>();
        User user = request.session().attribute("user");
        User thisUser = User.find(Integer.parseInt(request.params(":userid")));
@@ -244,7 +245,7 @@ public class App {
        model.put("user", thisUser);
        model.put("facility", thisFacility);
        model.put("resident", thisResident);
-       model.put("template", "templates/guardian-form.vtl");
+       model.put("template", "templates/task-form.vtl");
        return new ModelAndView(model, layout2);
     }, new VelocityTemplateEngine());
 
