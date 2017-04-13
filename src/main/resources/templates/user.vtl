@@ -8,44 +8,45 @@
         #end
       </ul>
     </div>
-
     <div class="col-md-5">
       <form class="" action="/users/:userid" method="post">
-        <div class="form-control">
-          <label for="user_id">User ID</label>
-          <input type="int" name="user_id" value="">
+        <div class="form-group">
         </div>
+        <label for="user_id">User ID</label>
         <div class="form-control">
-          <label for="facility_name">Facility Name</label>
-          <input type="text" name="facility_name" value="">
+          <input type="int" name="user_id" type="hidden">
         </div>
+        <label for="facility_name">Facility Name</label>
         <div class="form-control">
-          <label for="primary_first">First Primary Care Provider</label>
-          <input type="text" name="primary_first" value="">
+          <input type="text" name="facility_name">
         </div>
+        <label for="primary_first">Primary Contact First Name</label>
         <div class="form-control">
-          <label for="primary_last">Secondary Primary Care Provider</label>
-          <input type="text" name="primary_last" value="">
+          <input type="text" name="primary_first">
         </div>
+        <label for="primary_last">Primary Contact Last Name</label>
         <div class="form-control">
-          <label for="address">Address</label>
-          <input type="text" name="address" value="">
+          <input type="text" name="primary_last">
         </div>
+        <label for="address">Address</label>
         <div class="form-control">
-          <label for="city">City</label>
-          <input type="text" name="city" value="">
+          <input type="text" name="address">
         </div>
+        <label for="city">City</label>
         <div class="form-control">
-          <label for="state">State</label>
-          <input type="text" name="state" value="">
+          <input type="text" name="city">
         </div>
+        <label for="state">State</label>
         <div class="form-control">
-          <label for="zip">Zip</label>
-          <input type="number" name="zip" value="">
+          <input type="text" name="state">
         </div>
+        <label for="zip">Zip</label>
         <div class="form-control">
-          <label for="telephone">Telephone</label>
-          <input type="tel" name="telephone" value="">
+          <input type="number" name="zip">
+        </div>
+        <label for="telephone">Telephone</label>
+        <div class="form-control">
+          <input type="tel" name="telephone">
         </div>
         <button type="submit" class="btn btn-success" name="button">Submit</button>
       </form>
