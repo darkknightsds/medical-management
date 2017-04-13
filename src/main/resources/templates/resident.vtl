@@ -19,7 +19,8 @@
     </div>
   </div>
   <div class="col-md6">
-    <h3>Tasks</h3>
+    <h1>Tasks</h1>
+    <div class="well">
     <ul>
       #if ($tasks.size() > 0)
         #foreach($task in $tasks)
@@ -31,5 +32,6 @@
       #end
     </ul>
     <h4><a href="/users/$user.getId()/facilities/$facility.getId()/residents/$resident.getPatientId()/tasks/new">Add New Task</a></h4>
+  </div>
   </div>
 </div>
