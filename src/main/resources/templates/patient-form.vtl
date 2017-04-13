@@ -1,7 +1,7 @@
 <!--patient-form.vtl-->
 <h2>New Patient</h2>
 <div class="well">
-  <form action="/users/$user.getId()/facilities/:$facility.getId()/residents/new" method="post">
+  <form action="/users/$user.getId()/facilities/$facility.getId()/residents/new" method="post">
     <div class="form-group">
       <label for="first_name">Patient first name</label>
       <input id="first_name" name="first_name" type="text" class="form-control">
