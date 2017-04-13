@@ -1,12 +1,24 @@
+<nav class="navbar navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="/"><img src="/images/icon.png" id="home-icon" /></a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+
+    </ul>
+  </div>
+</nav>
 <div class="container">
   <div class="row">
     <div class="col-md-6">
       <h2>User: $user.getUsername()</h2>
-      <ul>
-        #foreach($facility in $user.getFosterHomes())
-        <li><a href="/users/$user.getId()/facilities/$facility.getId()">$facility.getFacilityName()</a></li>
-        #end
-      </ul>
+      <div class="well">
+        <ul>
+          #foreach($facility in $user.getFosterHomes())
+          <li><a href="/users/$user.getId()/facilities/$facility.getId()">$facility.getFacilityName()</a></li>
+          #end
+        </ul>
+      </div>
     </div>
   <div class="col-md-6">
     <h2>Input User Information:</h2>

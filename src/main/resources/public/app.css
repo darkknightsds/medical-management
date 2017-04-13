@@ -3,17 +3,26 @@
 @import url(https://fonts.googleapis.com/css?family=Indie+Flower);
 
 body {
-  background-color: #E5E7E6;
+  background-color: #1e81c0;
   height: 100%;
 }
 
-/*#content {
-  height: inherit;
-  background-color: white;
-}*/
+.login-well {
+  margin-top: 20px;
+}
 
 .page-title {
   font-size: 48px;
+}
+
+.navbar-custom {
+  background-color: white;
+}
+
+.navbar-nav>li>a {
+    font-size: 20px;
+    margin-top: 24px;
+    margin-left: 10px;
 }
 
 .well {
@@ -28,9 +37,8 @@ body {
 }
 
 #home-icon {
-  width: 50px;
-  height: 50px;
-  filter: invert(100%);
+  width: 120px;
+  height: 100px;
   margin: 0px;
 }
 
@@ -55,6 +63,28 @@ h3, h4 {
 
 .center-text {
   text-align: center;
+}
+
+.center-thing {
+  display: block;
+  vertical-align:middle;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: white;
+}
+
+.contactInfo{
+  float:right;
+}
+
+.footer p {
+  font-size: 20px
 }
 
 
