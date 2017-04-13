@@ -11,6 +11,7 @@ public class App {
 
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
+    String layout2 = "templates/layout-2.vtl";
 
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
@@ -74,16 +75,73 @@ public class App {
        User thisUser = User.find(Integer.parseInt(request.params(":userid")));
        model.put("user", thisUser);
        model.put("template", "templates/user.vtl");
-       return new ModelAndView(model, layout);
+       return new ModelAndView(model, layout2);
     }, new VelocityTemplateEngine());
 
-    // get("/users/:userid/facilities/:facilityid", (request, response) -> {
-    //    Map<String, Object> model = new HashMap<String, Object>();
-    //    User user = request.session().attribute("user");
-    //    User thisUser = User.find(Integer.parseInt(request.params(":id")));
-    //    model.put("user", thisUser);
-    //    model.put("template", "templates/user.vtl");
-    //    return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
+    post("/users/:userid/facilities/new", (request, response) -> {
+       Map<String, Object> model = new HashMap<String, Object>();
+       User thisUser = User.find(Integer.parseInt(request.params(":userid")));
+       int user_id = thisUser.getId();
+       String facility_name = request.queryParams("facility_name");
+       String primary_first = request.queryParams("primary_first");
+       String primary_last = request.queryParams("primary_last");
+       String address = request.queryParams("address");
+       String city = request.queryParams("city");
+       String state = request.queryParams("state");
+       int zip = Integer.parseInt(request.queryParams("zip"));
+       String telephone = request.queryParams("telephone");
+       FosterHome newFacility = new FosterHome(user_id, facility_name, primary_first, primary_last, address, city, state, zip, telephone);
+       newFacility.save();
+       String url = String.format("/users/" + thisUser.getId());
+       response.redirect(url);
+       return new ModelAndView(model, layout2);
+    }, new VelocityTemplateEngine());
+
+    get("/users/:userid/facilities/:facilityid", (request, response) -> {
+       Map<String, Object> model = new HashMap<String, Object>();
+       User user = request.session().attribute("user");
+       User thisUser = User.find(Integer.parseInt(request.params(":userid")));
+       FosterHome thisFacility = FosterHome.find(Integer.parseInt(request.params(":facilityid")));
+       model.put("user", thisUser);
+       model.put("facility", thisFacility);
+       model.put("template", "templates/facility.vtl");
+       return new ModelAndView(model, layout2);
+    }, new VelocityTemplateEngine());
+
+    get("/users/:userid/facilities/:facilityid/residents", (request, response) -> {
+       Map<String, Object> model = new HashMap<String, Object>();
+       User user = request.session().attribute("user");
+       User thisUser = User.find(Integer.parseInt(request.params(":userid")));
+       FosterHome thisFacility = FosterHome.find(Integer.parseInt(request.params(":facilityid")));
+       model.put("user", thisUser);
+       model.put("facility", thisFacility);
+       model.put("template", "templates/residents.vtl");
+       return new ModelAndView(model, layout2);
+    }, new VelocityTemplateEngine());
+
+    post("/users/:userid/facilities/:facilityid/residents/new", (request, response) -> {
+       Map<String, Object> model = new HashMap<String, Object>();
+       User thisUser = User.find(Integer.parseInt(request.params(":userid")));
+       FosterHome thisFacility = FosterHome.find(Integer.parseInt(request.params(":facilityid")));
+       int foster_home_id = thisFacility.getId();
+       String first_name = request.queryParams("first_name");
+       String last_name = request.queryParams("last_name");
+       String admit_date = request.queryParams("admit_date");
+       String telephone = request.queryParams("telephone");
+       String ssid = request.queryParams("ssid");
+       String sex = request.queryParams("sex");
+       String birth_date = request.queryParams("birth_date");
+       String birth_place = request.queryParams("birth_place");
+       String faith = request.queryParams("faith");
+       String hobbies = request.queryParams("hobbies");
+       String preferred_hospital = request.queryParams("preferred_hospital");
+       String primary_care_name = request.queryParams("primary_care_name");
+       String primary_phone = request.queryParams("primary_phone");
+       Patient newPatient = new Patient(foster_home_id, first_name, last_name, admit_date, telephone, ssid, sex, birth_date, birth_place, faith, hobbies, preferred_hospital, primary_care_name, primary_phone);
+       newPatient.save();
+       String url = String.format("/users/" + thisUser.getId() + "/facilities/" + thisFacility.getId() + "/residents");
+       response.redirect(url);
+       return new ModelAndView(model, layout2);
+    }, new VelocityTemplateEngine());
   }
 }
