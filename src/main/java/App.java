@@ -156,5 +156,21 @@ public class App {
        model.put("template", "templates/resident.vtl");
        return new ModelAndView(model, layout2);
     }, new VelocityTemplateEngine());
+
+    post("/users/:userid/facilities/:facilityid/residents/:residentid/tasks/new", (request, response) -> {
+       Map<String, Object> model = new HashMap<String, Object>();
+       User thisUser = User.find(Integer.parseInt(request.params(":userid")));
+       FosterHome thisFacility = FosterHome.find(Integer.parseInt(request.params(":facilityid")));
+       Patient thisResident = Patient.find(Integer.parseInt(request.params(":residentid")));
+       int patient_id = thisResident.getPatientId();
+       String description = request.queryParams("description");
+       String date_time = request.queryParams("date_time");
+       Task newTask = new Task(patient_id, description, date_time);
+       newTask.save();
+       String url = String.format("/users/" + thisUser.getId() + "/facilities/" + thisFacility.getId() + "/residents/" + thisResident.getPatientId());
+       response.redirect(url);
+       return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
   }
 }
