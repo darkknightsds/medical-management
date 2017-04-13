@@ -89,3 +89,7 @@ button {
   float: none;
   margin: 0 auto;
 }
+
+.info {
+  min-height: 50vh;
+}
