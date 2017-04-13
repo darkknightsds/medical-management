@@ -1,0 +1,36 @@
+<!--facility.vtl-->
+<div class="row">
+  <div class="col-md-6">
+    <div class="well">
+      <h3>Residents</h3>
+      <ul>
+        #foreach($patient in $fosterhome.getId())
+        <li><a href="/users/$user.getId()/faclities/$facility.getId()/residents/$resident.getId()">$patient.getLastName, $patient.getFirtName()</a></li>
+        #end
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="well">
+      <h3>Tasks</h3>
+      #foreach($task in $fosterhome.getId())
+      <li><a href="/users/$user.getId()/facilities/$facility.getId()/tasks/$task.getId()">$task.getDescription()</a></li>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="page-footer">
+      <h4>$fosterhome.getFacilityName()</h4>
+      <div class="contactInfo">
+        <ul>
+          <li>$fosterhome.getAddress()</li>
+          <li>$fosterhome.getCity()</li>
+          <li>$fosterhome.getState()</li>
+          <li>$fosterhome.getZip()</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!--facility.vtl-->
