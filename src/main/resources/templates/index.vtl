@@ -1,8 +1,9 @@
 <!--index.vtl-->
-<h1>Thanks for choosing Care CTRL!</h1>
+
 <div class="row">
   <div class="col-md-6 col-centered">
-    <div class="well">
+    <div class="well login-well">
+      <img src="/images/icon.png" alt="" />
       <form action="/" method="post">
         <h3>Login</h3>
         <div class="form-group">
@@ -11,11 +12,13 @@
           <label for="password">Password</label>
           <input id="password" name="password" type="password" class="form-control" required>
         </div>
-        <button type="submit" class="btn btn-primary">login</button>
+        <div class="center-block">
+          <button type="submit" class="btn btn-primary">login</button>
+          <a href="/users/new">Create new account</a>
+        </div>
       </form>
     </div>
   </div>
 </div>
 <br>
-<a href="/users/new">Create new account</a>
 <!--index.vtl-->

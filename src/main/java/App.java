@@ -73,9 +73,21 @@ public class App {
        Map<String, Object> model = new HashMap<String, Object>();
        User user = request.session().attribute("user");
        User thisUser = User.find(Integer.parseInt(request.params(":userid")));
+      //  if (FosterHome.all().size() == 0) {
+      //    String url = String.format("/invalid");
+      //    response.redirect(url);
+      //  } else {
+      //    model.put("facilities", FosterHome.all())
+      //  }
+      //  if (Patient.all().size() == 0) {
+      //    String url = String.format("/invalid");
+      //    response.redirect(url);
+      //  } else {
+      //    model.put("facilities", FosterHome.all())
+      //  }
        model.put("user", thisUser);
        model.put("template", "templates/user.vtl");
-       return new ModelAndView(model, layout2);
+       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
     post("/users/:userid/facilities/new", (request, response) -> {
