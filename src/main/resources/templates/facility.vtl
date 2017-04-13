@@ -1,40 +1,44 @@
 <!--facility.vtl-->
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-8 col-md-offset-2">
     <div class="well info">
       <h3>Residents</h3>
-      <ul>
-        #foreach($patient in $facility.getId())
-        <li><a href="/users/$user.getId()/faclities/$facility.getId()/residents/$resident.getId()">$patient.getLastName, $patient.getFirtName()</a></li>
+      <table class="table table-bordered table-hover">
+        <tr>
+          <th>Last Name</th>
+          <th>First Name</th>
+          <th>Date Admitted</th>
+          <th>Phone Number</th>
+        </tr>
+        #foreach($resident in $facility.getPatients())
+        <tr>
+          <td><a href="/users/$user.getId()/facilities/$facility.getId()/residents/$resident.getPatientId()">$resident.getLastName()</a></td>
+          <td><a href="/users/$user.getId()/facilities/$facility.getId()/residents/$resident.getPatientId()">$resident.getFirstName()</a></td>
+          <td>$resident.getAdmitDate()</td>
+          <td>$resident.getTelephone()</td>
+        </tr>
         #end
-      </ul>
-      <h4><a href="/users/$user.getId()/facilities/$facility.getId()/residents/new">Add New Resident to Facility</a></h4>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="well info">
-      <h3>Tasks</h3>
-      <ul>
-      #foreach($task in $facility.getId())
-      <li><a href="/users/$user.getId()/facilities/$facility.getId()/tasks/$task.getId()">$task.getDescription()</a></li>
-      #end
-    </ul>
+      </table>
     </div>
   </div>
 </div>
 <div class="row">
-  <div class="col-md-12">
-    <div class="page-footer">
-      <h4>$facility.getFacilityName()</h4>
-      <div class="contactInfo">
-        <ul>
-          <li>$facility.getAddress()</li>
-          <li>$facility.getCity()</li>
-          <li>$facility.getState()</li>
-          <li>$facility.getZip()</li>
-        </ul>
-      </div>
+  <div class="col-md-8 col-md-offset-2">
+    <div class="well">
+      <h3>New Residents</h3>
+      <h4><a href="/users/$user.getId()/facilities/$facility.getId()/residents/new">Add New Resident to Facility</a></h4>
     </div>
+  </div>
+</div>
+<div class="page-footer">
+  <h4>$facility.getFacilityName() Information</h4>
+  <div class="contactInfo">
+    <ul>
+      <li>$facility.getAddress()</li>
+      <li>$facility.getCity()</li>
+      <li>$facility.getState()</li>
+      <li>$facility.getZip()</li>
+    </ul>
   </div>
 </div>
 <!--facility.vtl-->
