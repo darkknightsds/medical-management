@@ -8,15 +8,6 @@
           <th>First Name</th>
           <th>Date Admitted</th>
           <th>Phone Number</th>
-          <th>SSN</th>
-          <th>Gender</th>
-          <th>Date of Birth</th>
-          <th>Place of Birth</th>
-          <th>Religion</th>
-          <th>Hobbies</th>
-          <th>Preferred Hospital</th>
-          <th>Primary Care Name</th>
-          <th>Primary Care Phone #</th>
         </tr>
         #foreach($resident in $residents)
           <tr>
@@ -24,15 +15,6 @@
             <td><a href="/user/$user.getId()/facilities/$fosterhome.getId()/residents/resident.getId()">$user.getFirstName()</a></td>
             <td>$user.getAdmitDate()</td>
             <td>$user.getTelephone()</td>
-            <td>$user.getSsid()</td>
-            <td>$user.getSex()</td>
-            <td>$user.getBirthDate()</td>
-            <td>$user.getBirthPlace()</td>
-            <td>$user.getFaith()</td>
-            <td>$user.getHobbies()</td>
-            <td>$user.getPreferredHospital()</td>
-            <td>$user.getPrimaryCareName()</td>
-            <td>$user.getPrimaryPhone()</td>
           </tr>
         #end
       </table>
