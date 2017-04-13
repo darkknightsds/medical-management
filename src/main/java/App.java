@@ -119,6 +119,17 @@ public class App {
        return new ModelAndView(model, layout2);
     }, new VelocityTemplateEngine());
 
+    get("/users/:userid/facilities/:facilityid/residents/new", (request, response) -> {
+       Map<String, Object> model = new HashMap<String, Object>();
+       User user = request.session().attribute("user");
+       User thisUser = User.find(Integer.parseInt(request.params(":userid")));
+       FosterHome thisFacility = FosterHome.find(Integer.parseInt(request.params(":facilityid")));
+       model.put("user", thisUser);
+       model.put("facility", thisFacility);
+       model.put("template", "templates/patient-form.vtl");
+       return new ModelAndView(model, layout2);
+    }, new VelocityTemplateEngine());
+
     post("/users/:userid/facilities/:facilityid/residents/new", (request, response) -> {
        Map<String, Object> model = new HashMap<String, Object>();
        User thisUser = User.find(Integer.parseInt(request.params(":userid")));

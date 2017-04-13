@@ -3,8 +3,8 @@
     <div class="col-md-6">
       <h2>User: $user.getUsername()</h2>
       <ul>
-        #foreach($fosterhome in $user.getFosterHomes())
-        <li><a href="/user/$user.getId()/facilities/$fosterhome.getId()">$fosterhome.getFacilityName()</a></li>
+        #foreach($facility in $user.getFosterHomes())
+        <li><a href="/users/$user.getId()/facilities/$facility.getId()">$facility.getFacilityName()</a></li>
         #end
       </ul>
     </div>

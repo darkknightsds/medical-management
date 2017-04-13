@@ -1,35 +1,36 @@
 <!--patient-form.vtl-->
 <h2>New Patient</h2>
-
-<form action="TBD" method="post">
-  <div class="form-group">
-    <label for="first_name">Patient first name</label>
-    <input id="first_name" name="first_name" type="text" class="form-control">
-    <label for="last_name">Patient last name</label>
-    <input id="last_name" name="last_name" type="text" class="form-control">
-    <label for="admit_date">Patient admit date</label>
-    <input id="admit_date" name="admit_date" type="date" class="form-control">
-    <label for="telephone">Patient telephone</label>
-    <input id="telephone" name="telephone" type="tel" class="form-control">
-    <label for="ssid">Patient Social Security</label>
-    <input id="ssid" name="ssid" type="text" class="form-control">
-    <label for="sex">Patient sex</label>
-    <input id="sex" name="sex" type="text" class="form-control">
-    <label for="birth_date">Patient date of birth</label>
-    <input id="birth_date" name="birth_date" type="date" class="form-control">
-    <label for="birth_place">Patient birth place</label>
-    <input id="birth_place" name="birth_place" type="text" class="form-control">
-    <label for="faith">Patient faith</label>
-    <input id="faith" name="faith" type="text" class="form-control">
-    <label for="hobbies">Patient hobbies</label>
-    <input id="hobbies" name="hobbies" type="text" class="form-control">
-    <label for="preferred_hospital">Patient preferred hospital</label>
-    <input id="preferred_hospital" name="preferred_hospital" type="text" class="form-control">
-    <label for="primary_care_name">Patient primary care physician</label>
-    <input id="primary_care_name" name="primary_care_name" type="text" class="form-control">
-    <label for="primary_phone">Primary care phone</label>
-    <input id="primary_phone" name="primary_phone" type="tel" class="form-control">
-  </div>
-  <button type="submit" class="btn btn-success">Add New Patient</button>
-</form>
+<div class="well">
+  <form action="/users/$user.getId()/facilities/$facility.getId()/residents/new" method="post">
+    <div class="form-group">
+      <label for="first_name">Patient first name</label>
+      <input id="first_name" name="first_name" type="text" class="form-control">
+      <label for="last_name">Patient last name</label>
+      <input id="last_name" name="last_name" type="text" class="form-control">
+      <label for="admit_date">Patient admit date</label>
+      <input id="admit_date" name="admit_date" type="date" class="form-control">
+      <label for="telephone">Patient telephone</label>
+      <input id="telephone" name="telephone" type="tel" class="form-control">
+      <label for="ssid">Patient Social Security</label>
+      <input id="ssid" name="ssid" type="text" class="form-control">
+      <label for="sex">Patient sex</label>
+      <input id="sex" name="sex" type="text" class="form-control">
+      <label for="birth_date">Patient date of birth</label>
+      <input id="birth_date" name="birth_date" type="date" class="form-control">
+      <label for="birth_place">Patient birth place</label>
+      <input id="birth_place" name="birth_place" type="text" class="form-control">
+      <label for="faith">Patient faith</label>
+      <input id="faith" name="faith" type="text" class="form-control">
+      <label for="hobbies">Patient hobbies</label>
+      <input id="hobbies" name="hobbies" type="text" class="form-control">
+      <label for="preferred_hospital">Patient preferred hospital</label>
+      <input id="preferred_hospital" name="preferred_hospital" type="text" class="form-control">
+      <label for="primary_care_name">Patient primary care physician</label>
+      <input id="primary_care_name" name="primary_care_name" type="text" class="form-control">
+      <label for="primary_phone">Primary care phone</label>
+      <input id="primary_phone" name="primary_phone" type="tel" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-success">Add New Patient</button>
+  </form>
+</div>
 <!--patient-form.vtl-->
