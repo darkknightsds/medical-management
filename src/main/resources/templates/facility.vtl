@@ -1,3 +1,21 @@
 <!--facility.vtl-->
-
+<div class="row">
+  <div class="col-md-6">
+    <div class="well">
+      <h3>Residents</h3>
+      <ul>
+        #foreach($patient in $fosterhome.getId())
+        <li><a href="/users/$user.getId()/faclities/$facility.getId()/residents/$resident.getId()">$patient.getLastName, $patient.getFirtName()</a></li>
+        #end
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="well">
+      <h3>Tasks</h3>
+      #foreach($task in $fosterhome.getId())
+      
+    </div>
+  </div>
+</div>
 <!--facility.vtl-->
