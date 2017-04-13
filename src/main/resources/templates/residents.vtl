@@ -9,12 +9,12 @@
           <th>Date Admitted</th>
           <th>Phone Number</th>
         </tr>
-        #foreach($resident in $residents)
+        #foreach($resident in $facility.getPatients())
           <tr>
-            <td><a href="/user/$user.getId()/facilities/$fosterhome.getId()/residents/resident.getId()">$user.getLastName()</a></td>
-            <td><a href="/user/$user.getId()/facilities/$fosterhome.getId()/residents/resident.getId()">$user.getFirstName()</a></td>
-            <td>$user.getAdmitDate()</td>
-            <td>$user.getTelephone()</td>
+            <td><a href="/users/$user.getId()/facilities/$facility.getId()/residents/$resident.getPatientId()">$resident.getLastName()</a></td>
+            <td><a href="/users/$user.getId()/facilities/$facility.getId()/residents/$resident.getPatientId()">$resident.getFirstName()</a></td>
+            <td>$resident.getAdmitDate()</td>
+            <td>$resident.getTelephone()</td>
           </tr>
         #end
       </table>
