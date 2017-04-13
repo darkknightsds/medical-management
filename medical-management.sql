@@ -163,7 +163,7 @@ CREATE TABLE med_histories (
     patient_id integer NOT NULL,
     type character varying NOT NULL,
     name character varying NOT NULL,
-    date date NOT NULL,
+    date character varying  NOT NULL,
     medications character varying NOT NULL,
     current boolean NOT NULL
 );
@@ -237,11 +237,11 @@ CREATE TABLE patients (
     foster_home_id integer NOT NULL,
     first_name character varying NOT NULL,
     last_name character varying NOT NULL,
-    admit_date date NOT NULL,
+    admit_date character varying NOT NULL,
     telephone character varying NOT NULL,
     ssid character varying NOT NULL,
     sex character varying NOT NULL,
-    birth_date date NOT NULL,
+    birth_date character varying NOT NULL,
     birth_place character varying NOT NULL,
     faith character varying NOT NULL,
     hobbies character varying NOT NULL,
