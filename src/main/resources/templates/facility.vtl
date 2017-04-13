@@ -8,15 +8,17 @@
         <li><a href="/users/$user.getId()/faclities/$facility.getId()/residents/$resident.getId()">$patient.getLastName, $patient.getFirtName()</a></li>
         #end
       </ul>
-      <h4><a href="/users/$user.getId()/facilities/$facility.getId()/residents/new">Add New Resident to Facility</h4>
+      <h4><a href="/users/$user.getId()/facilities/$facility.getId()/residents/new">Add New Resident to Facility</a></h4>
     </div>
   </div>
   <div class="col-md-6">
     <div class="well info">
       <h3>Tasks</h3>
+      <ul>
       #foreach($task in $facility.getId())
       <li><a href="/users/$user.getId()/facilities/$facility.getId()/tasks/$task.getId()">$task.getDescription()</a></li>
       #end
+    </ul>
     </div>
   </div>
 </div>

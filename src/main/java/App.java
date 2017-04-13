@@ -235,20 +235,33 @@ public class App {
        return new ModelAndView(model, layout2);
     }, new VelocityTemplateEngine());
 
-    post("/users/:userid/facilities/:facilityid/residents/:residentid/medications/new", (request, response) -> {
+    get("/users/:userid/facilities/:facilityid/residents/:residentid/taks/new", (request, response) -> {
        Map<String, Object> model = new HashMap<String, Object>();
+       User user = request.session().attribute("user");
        User thisUser = User.find(Integer.parseInt(request.params(":userid")));
        FosterHome thisFacility = FosterHome.find(Integer.parseInt(request.params(":facilityid")));
        Patient thisResident = Patient.find(Integer.parseInt(request.params(":residentid")));
-       int patient_id = thisResident.getPatientId();
-       String name = request.queryParams("name");
-       String dosage = request.queryParams("dosage");
-       String frequency = request.queryParams("frequency");
-       Medication newMedication = new Medication(patient_id, name, dosage, frequency);
-       newMedication.save();
-       String url = String.format("/users/" + thisUser.getId() + "/facilities/" + thisFacility.getId() + "/residents/" + thisResident.getPatientId());
+       model.put("user", thisUser);
+       model.put("facility", thisFacility);
+       model.put("resident", thisResident);
+       model.put("template", "templates/guardian-form.vtl");
        return new ModelAndView(model, layout2);
     }, new VelocityTemplateEngine());
+
+    // post("/users/:userid/facilities/:facilityid/residents/:residentid/medications/new", (request, response) -> {
+    //    Map<String, Object> model = new HashMap<String, Object>();
+    //    User thisUser = User.find(Integer.parseInt(request.params(":userid")));
+    //    FosterHome thisFacility = FosterHome.find(Integer.parseInt(request.params(":facilityid")));
+    //    Patient thisResident = Patient.find(Integer.parseInt(request.params(":residentid")));
+    //    int patient_id = thisResident.getPatientId();
+    //    String name = request.queryParams("name");
+    //    String dosage = request.queryParams("dosage");
+    //    String frequency = request.queryParams("frequency");
+    //    Medication newMedication = new Medication(patient_id, name, dosage, frequency);
+    //    newMedication.save();
+    //    String url = String.format("/users/" + thisUser.getId() + "/facilities/" + thisFacility.getId() + "/residents/" + thisResident.getPatientId());
+    //    return new ModelAndView(model, layout2);
+    // }, new VelocityTemplateEngine());
 
     // get("/users/:userid/facilities/:facilityid/residents/:residentid/medhistory/new", (request, response) -> {
     //    Map<String, Object> model = new HashMap<String, Object>();
