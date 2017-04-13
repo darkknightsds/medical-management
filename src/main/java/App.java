@@ -94,7 +94,7 @@ public class App {
        newFacility.save();
        String url = String.format("/users/" + thisUser.getId());
        response.redirect(url);
-       return new ModelAndView(model, layout);
+       return new ModelAndView(model, layout2);
     }, new VelocityTemplateEngine());
 
     get("/users/:userid/facilities/:facilityid", (request, response) -> {
@@ -116,6 +116,31 @@ public class App {
        model.put("user", thisUser);
        model.put("facility", thisFacility);
        model.put("template", "templates/residents.vtl");
+       return new ModelAndView(model, layout2);
+    }, new VelocityTemplateEngine());
+
+    post("/users/:userid/facilities/:facilityid/residents/new", (request, response) -> {
+       Map<String, Object> model = new HashMap<String, Object>();
+       User thisUser = User.find(Integer.parseInt(request.params(":userid")));
+       FosterHome thisFacility = FosterHome.find(Integer.parseInt(request.params(":facilityid")));
+       int foster_home_id = thisFacility.getId();
+       String first_name = request.queryParams("first_name");
+       String last_name = request.queryParams("last_name");
+       String admit_date = request.queryParams("admit_date");
+       String telephone = request.queryParams("telephone");
+       String ssid = request.queryParams("ssid");
+       String sex = request.queryParams("sex");
+       String birth_date = request.queryParams("birth_date");
+       String birth_place = request.queryParams("birth_place");
+       String faith = request.queryParams("faith");
+       String hobbies = request.queryParams("hobbies");
+       String preferred_hospital = request.queryParams("preferred_hospital");
+       String primary_care_name = request.queryParams("primary_care_name");
+       String primary_phone = request.queryParams("primary_phone");
+       Patient newPatient = new Patient(foster_home_id, first_name, last_name, admit_date, telephone, ssid, sex, birth_date, birth_place, faith, hobbies, preferred_hospital, primary_care_name, primary_phone);
+       newPatient.save();
+       String url = String.format("/users/" + thisUser.getId() + "/facilities/" + thisFacility.getId() + "/residents");
+       response.redirect(url);
        return new ModelAndView(model, layout2);
     }, new VelocityTemplateEngine());
   }
