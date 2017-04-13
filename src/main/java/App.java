@@ -78,6 +78,25 @@ public class App {
        return new ModelAndView(model, layout2);
     }, new VelocityTemplateEngine());
 
+    post("/users/:userid", (request, response) -> {
+       Map<String, Object> model = new HashMap<String, Object>();
+       User thisUser = User.find(Integer.parseInt(request.params(":userid")));
+       int user_id = thisUser.getId();
+       String facility_name = request.queryParams("facility_name");
+       String primary_first = request.queryParams("primary_first");
+       String primary_last = request.queryParams("primary_last");
+       String address = request.queryParams("address");
+       String city = request.queryParams("city");
+       String state = request.queryParams("state");
+       int zip = Integer.parseInt(request.queryParams("zip"));
+       String telephone = request.queryParams("telephone");
+       FosterHome newFacility = new FosterHome(user_id, facility_name, primary_first, primary_last, address, city, state, zip, telephone);
+       newFacility.save();
+       String url = String.format("/users/" + thisUser.getId());
+       response.redirect(url);
+       return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     get("/users/:userid/facilities/:facilityid", (request, response) -> {
        Map<String, Object> model = new HashMap<String, Object>();
        User user = request.session().attribute("user");
