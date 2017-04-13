@@ -11,15 +11,12 @@ import java.sql.Timestamp;
 
 public class TaskTest {
 
-  Date testDate1 = new Date (102, 9, 22);
-  Date testDate2 = new Date (30, 3, 12);
-
   @Rule
   public DatabaseRule database = new DatabaseRule();
 
   @Test
   public void task_instantiatesCorrectly_true() {
-    Patient testPatient = new Patient(1, "Bob", "Jones", testDate1, "222-222-2222", "111-11-1111", "female", testDate2, "Saskatchewan", "Hindu", "sports", "Legacy Emanuel", "Bob Ross, MD", "123-123-4567");
+    Patient testPatient = new Patient(1, "Bob", "Jones", "12/12/12", "222-222-2222", "111-11-1111", "female", "03/15/30", "Saskatchewan", "Hindu", "sports", "Legacy Emanuel", "Bob Ross, MD", "123-123-4567");
     testPatient.save();
     Task testTask = new Task(testPatient.getPatientId(), "Give Bob a shower.", "2017-04-04 03:30");
     assertTrue(testTask instanceof Task);
@@ -27,7 +24,7 @@ public class TaskTest {
 
   @Test
   public void save_savesTaskToDatabase_true() {
-    Patient testPatient = new Patient(1, "Bob", "Jones", testDate1, "222-222-2222", "111-11-1111", "female", testDate2, "Saskatchewan", "Hindu", "sports", "Legacy Emanuel", "Bob Ross, MD", "123-123-4567");
+    Patient testPatient = new Patient(1, "Bob", "Jones", "12/12/12", "222-222-2222", "111-11-1111", "female", "03/15/30", "Saskatchewan", "Hindu", "sports", "Legacy Emanuel", "Bob Ross, MD", "123-123-4567");
     testPatient.save();
     Task testTask = new Task(testPatient.getPatientId(), "Give Bob a shower.", "2017-04-04 03:30");
     testTask.save();
@@ -36,7 +33,7 @@ public class TaskTest {
 
   @Test
   public void getTopTaks_returnsTasksOrderedByDateTime_true() {
-    Patient testPatient = new Patient(1, "Bob", "Jones", testDate1, "222-222-2222", "111-11-1111", "female", testDate2, "Saskatchewan", "Hindu", "sports", "Legacy Emanuel", "Bob Ross, MD", "123-123-4567");
+    Patient testPatient = new Patient(1, "Bob", "Jones", "12/12/12", "222-222-2222", "111-11-1111", "female", "03/15/30", "Saskatchewan", "Hindu", "sports", "Legacy Emanuel", "Bob Ross, MD", "123-123-4567");
     testPatient.save();
     Task testTask1 = new Task(testPatient.getPatientId(), "Give Bob a shower.", "2017-04-04 14:30");
     testTask1.save();

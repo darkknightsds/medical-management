@@ -15,11 +15,11 @@ public class MedHistory
     private int patient_id;
     private String type;
     private String name;
-    private Date date;
+    private String date;
     private String medications;
     private boolean current;
 
-  public MedHistory( int patient_id, String type, String name, Date date, String medications, boolean current ) {
+  public MedHistory( int patient_id, String type, String name, String date, String medications, boolean current ) {
     this.patient_id = patient_id;
     this.type = type;
     this.name = name;
@@ -44,7 +44,7 @@ public class MedHistory
     return name;
   }
 
-  public Date getDate(){
+  public String getDate(){
     return date;
   }
 
@@ -103,7 +103,7 @@ public class MedHistory
     }
   }
 
-  public void updateMedHistory(int patient_id, String type, String name, Date date, String medications, boolean current) {
+  public void updateMedHistory(int patient_id, String type, String name, String date, String medications, boolean current) {
     this.patient_id = patient_id;
     this.type = type;
     this.name = name;
